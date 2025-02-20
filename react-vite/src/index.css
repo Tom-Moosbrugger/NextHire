@@ -19,7 +19,7 @@ menu {
   list-style: none;
 }
 
-button,
+button
 input[type="email"],
 input[type="password"],
 input[type="submit"],
@@ -38,4 +38,8 @@ table {
 body {
   background-color: black;
   color: white;
+}
+
+button {
+  border: none;
 }
