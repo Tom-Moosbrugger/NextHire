@@ -51,6 +51,11 @@ button {
   border: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 em {
   font-weight: 1000;
 }

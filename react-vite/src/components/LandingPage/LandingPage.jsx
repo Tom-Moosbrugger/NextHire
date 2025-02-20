@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
-import SignUpFormModal from "../SignupFormModal";
 import * as sessionActions from "../../redux/session";
 import "./LandingPage.css";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const navigate = useNavigate();
+  const user = useSelector(state => state.session.user);
+
+  if (user) return navigate('/home');
 
   const loginDemo = async () => {
     await dispatch(
@@ -27,11 +30,7 @@ const LandingPage = () => {
           </p>
         </header>
         <section>
-          <OpenModalButton
-            modalComponent={<SignUpFormModal />}
-            buttonText="Sign Up"
-            id="sign-up"
-          />
+          <button onClick={() => navigate("/sign-up")}>Sign Up</button>
           <OpenModalButton
             modalComponent={<LoginFormModal />}
             buttonText="Log In"

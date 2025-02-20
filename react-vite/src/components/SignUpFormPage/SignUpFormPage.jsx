@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
 import { validateEmail } from "../../helperfunctions/helperFunctions";
-import "./SignupForm.css";
+import './SignUpFormPage.css';
 
-function SignupFormModal() {
-  const dispatch = useDispatch();
+function SignUpFormPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +14,9 @@ function SignupFormModal() {
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     const validationErrors = {};
@@ -47,6 +50,8 @@ function SignupFormModal() {
     setErrors(validationErrors);
   }, [email, username, password, confirmPassword]);
 
+  if (user) return navigate('/home'); 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -63,7 +68,8 @@ function SignupFormModal() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      closeModal();
+      closeModal()
+      return navigate('/home');
     }
   };
 
@@ -134,4 +140,4 @@ function SignupFormModal() {
   );
 }
 
-export default SignupFormModal;
+export default SignUpFormPage;

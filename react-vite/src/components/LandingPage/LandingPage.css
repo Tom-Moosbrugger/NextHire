@@ -17,10 +17,6 @@
     height: 50%;
 }
 
-.landing-page header {
-    height: 25%;
-}
-
 .landing-page h1 {
     border-bottom: 1px solid #4d4d4d;
     border-left: 1px solid #4d4d4d;
@@ -40,7 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 20px;
+    padding: 40px 0;
     height: 75%
 }
 
