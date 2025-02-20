@@ -1,21 +1,27 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
 import * as sessionActions from "../../redux/session";
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
-  if (user) return navigate('/home');
+  if (user) return navigate("/home");
 
   const loginDemo = async () => {
-    await dispatch(
+    const serverResponse = await dispatch(
       sessionActions.thunkLogin({ email: "demo@aa.io", password: "password" })
     );
+
+    if (serverResponse) {
+      setErrors(serverResponse);
+    } else {
+      return navigate("/home");
+    }
   };
 
   return (
@@ -31,13 +37,12 @@ const LandingPage = () => {
         </header>
         <section>
           <button onClick={() => navigate("/sign-up")}>Sign Up</button>
-          <OpenModalButton
-            modalComponent={<LoginFormModal />}
-            buttonText="Log In"
-            id="log-in"
-          />
+          <button>Log In</button>
           <button onClick={loginDemo}>Log In as Demo User</button>
         </section>
+        <div className="landing-page-error">
+          {errors.server && <p>{errors.server}</p>}
+        </div>
       </div>
     </article>
   );

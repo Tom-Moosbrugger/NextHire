@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import { validateEmail } from "../../helperfunctions/helperFunctions";
+import { validateEmail } from "../../helperFunctions/helperFunctions";
 import './SignUpFormPage.css';
 
 function SignUpFormPage() {
@@ -13,7 +12,6 @@ function SignUpFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const { closeModal } = useModal();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.session.user);
@@ -68,7 +66,6 @@ function SignUpFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      closeModal()
       return navigate('/home');
     }
   };
