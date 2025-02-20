@@ -32,12 +32,12 @@ const LandingPage = () => {
             Welcome to <em>Next</em>Hire
           </h1>
           <p>
-            your search for what&apos;s <em>next</em> starts here
+            Your search for what&apos;s <em>next</em> starts here
           </p>
         </header>
         <section>
           <button onClick={() => navigate("/sign-up")}>Sign Up</button>
-          <button>Log In</button>
+          <button onClick={() => navigate("/log-in")}>Log In</button>
           <button onClick={loginDemo}>Log In as Demo User</button>
         </section>
         <div className="landing-page-error">
