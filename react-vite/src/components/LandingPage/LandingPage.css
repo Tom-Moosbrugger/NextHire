@@ -9,7 +9,7 @@
 .landing-page-container {
     background-color: black;
     border: .5px solid white;
-    box-shadow: -40px 40px white;
+    box-shadow: -40px 40px rgb(176, 176, 176);
     min-width: 550px;
     min-height: 500px;
     padding: 40px;
@@ -28,10 +28,6 @@
     margin-bottom: 20px;
     padding-left: 10px;
     text-align: left;
-}
-
-.landing-page em {
-    font-weight: 1000;
 }
 
 .landing-page p {
