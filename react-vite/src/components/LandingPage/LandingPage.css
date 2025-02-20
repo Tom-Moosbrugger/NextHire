@@ -1,0 +1,64 @@
+.landing-page {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-page-container {
+    background-color: black;
+    border: .5px solid white;
+    box-shadow: -40px 40px white;
+    min-width: 550px;
+    min-height: 500px;
+    padding: 40px;
+    width: 50%;
+    height: 50%;
+}
+
+.landing-page header {
+    height: 25%;
+}
+
+.landing-page h1 {
+    border-bottom: 1px solid #4d4d4d;
+    border-left: 1px solid #4d4d4d;
+    font-size: 50px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.landing-page em {
+    font-weight: 1000;
+}
+
+.landing-page p {
+    font-size: 20px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.landing-page section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px;
+    height: 75%
+}
+
+.landing-page button {
+    background-color: white;
+    font-size: 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.landing-page button:hover {
+    box-shadow: -10px 10px goldenrod;
+}
+
+
+
+
