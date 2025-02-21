@@ -14,7 +14,7 @@ const LandingPage = () => {
     dispatch(sessionActions.thunkAuthenticate());
   }, [dispatch]);
 
-  if (user) return navigate("/home");
+  if (user) return navigate("/applications");
 
   const loginDemo = async () => {
     const serverResponse = await dispatch(
@@ -24,7 +24,7 @@ const LandingPage = () => {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      return navigate("/home");
+      return navigate("/applications");
     }
   };
 

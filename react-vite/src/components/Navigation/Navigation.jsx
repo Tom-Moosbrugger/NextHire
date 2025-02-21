@@ -25,7 +25,7 @@ function Navigation() {
 
   return (
     <nav className="nav-bar">
-      <NavLink to="/home">
+      <NavLink to="/applications">
         <PiHandshakeLight />
       </NavLink>
       <div className="middle-nav-bar">

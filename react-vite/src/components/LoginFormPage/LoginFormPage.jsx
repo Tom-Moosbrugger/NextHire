@@ -34,7 +34,7 @@ function LoginFormPage() {
     setErrors(validationErrors);
   }, [email, password]);
 
-  if (user) return navigate("/home");
+  if (user) return navigate("/applications");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      return navigate("/home");
+      return navigate("/applications");
     }
   };
 
