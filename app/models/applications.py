@@ -21,6 +21,7 @@ class Application(db.Model):
     job_post_url = db.Column(db.String(2083))
     submission_details = db.Column(db.Text)
     application_deadline = db.Column(db.Date, nullable=False)
+    application_status = db.Column(db.String(9), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.today)
     updated_at = db.Column(db.DateTime, default=datetime.today, onupdate=datetime.today)
 
@@ -42,11 +43,11 @@ class Application(db.Model):
         back_populates="applications",
         cascade="all, delete-orphan",
     )
-    questions = db.relationship(
+    rejections = db.relationship(
         "ApplicationRejection",
         back_populates="applications",
         cascade="all, delete-orphan",
     )
-    questions = db.relationship(
+    offers = db.relationship(
         "ApplicationOffer", back_populates="applications", cascade="all, delete-orphan"
     )
