@@ -49,7 +49,5 @@ class Application(db.Model):
         cascade="all, delete-orphan",
     )
     offers = db.relationship(
-        "ApplicationOffer", 
-        back_populates="applications", 
-        cascade="all, delete-orphan"
+        "ApplicationOffer", back_populates="applications", cascade="all, delete-orphan"
     )
