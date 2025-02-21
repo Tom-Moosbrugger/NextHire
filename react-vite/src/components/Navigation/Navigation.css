@@ -1,3 +1,28 @@
-.profile-dropdown {
-  position: absolute;
+.nav-bar {
+  border-bottom: 1px solid #4d4d4d;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px
+}
+
+.nav-bar svg {
+  border-radius: 20px;
+  padding: 5px;
+  font-size: 40px;
+  color: black;
+  background-color: white;
+}
+
+.nav-bar button {
+  background-color: black;
+    border: 1px solid white;
+    color: white;
+    font-size: 16px;
+    height: 30px;
+    cursor: pointer;
+    width: 100px;
+}
+
+#log-out:hover {
+    box-shadow: -5px 5px rgb(239, 187, 18);
 }

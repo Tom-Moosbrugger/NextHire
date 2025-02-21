@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { thunkSignup } from "../../redux/session";
 import { validateEmail } from "../../helperFunctions/helperFunctions";
+import * as sessionActions from "../../redux/session";
 import './SignUpFormPage.css';
 
 function SignUpFormPage() {
@@ -15,6 +16,10 @@ function SignUpFormPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.session.user);
+
+  useEffect(() => {
+    dispatch(sessionActions.thunkAuthenticate());
+  }, [dispatch]);
 
   useEffect(() => {
     const validationErrors = {};

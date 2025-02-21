@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as sessionActions from "../../redux/session";
@@ -9,6 +9,10 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    dispatch(sessionActions.thunkAuthenticate());
+  }, [dispatch]);
 
   if (user) return navigate("/home");
 

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { thunkLogin } from "../../redux/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { validateEmail } from "../../helperFunctions/helperFunctions";
+import * as sessionActions from "../../redux/session";
 import "./LoginFormPage.css";
 
 function LoginFormPage() {
@@ -12,6 +13,12 @@ function LoginFormPage() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const user = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    dispatch(sessionActions.thunkAuthenticate());
+  }, [dispatch]);
 
   useEffect(() => {
     const validationErrors = {};
@@ -26,6 +33,8 @@ function LoginFormPage() {
 
     setErrors(validationErrors);
   }, [email, password]);
+
+  if (user) return navigate("/home");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
