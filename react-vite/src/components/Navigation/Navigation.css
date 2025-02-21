@@ -21,7 +21,7 @@
   background-color: white;
 }
 
-.nav-bar button {
+/* .nav-bar button {
   background-color: black;
   border: 1px solid white;
   color: white;
@@ -34,11 +34,61 @@
   box-shadow: -10px 10px rgb(239, 187, 18);
 }
 
+.middle-nav-bar .active {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar button:focus {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar button:active {
+  box-shadow: -10px 10px white;
+} */
+
+.middle-nav-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+
+.middle-nav-bar a:hover {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar .active {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar a:focus {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar a:active {
+  box-shadow: -10px 10px white;
+}
+
 .nav-bar #log-out {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
   width: 100px;
 }
 
 .nav-bar #log-out:hover {
   box-shadow: -5px 5px rgb(239, 187, 18);
   width: 100px;
+}
+
+.nav-bar #log-out:active {
+  box-shadow: -5px 5px white;
 }

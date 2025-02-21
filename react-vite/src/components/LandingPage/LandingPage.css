@@ -40,7 +40,7 @@
 }
 
 .landing-page button {
-  background-color: #4d4d4d;
+  background-color: black;
   border: .5px solid white;
   color: white;
   font-size: 20px;
@@ -50,6 +50,10 @@
 
 .landing-page button:hover {
   box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.landing-page button:active {
+  box-shadow: -10px 10px white;
 }
 
 .landing-page-error {

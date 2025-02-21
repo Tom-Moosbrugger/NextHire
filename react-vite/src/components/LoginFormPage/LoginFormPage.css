@@ -53,7 +53,7 @@
 }
 
 .log-in-form button {
-    background-color: #4d4d4d;
+    background-color: black;
     border: .5px solid white;
     color: white;
     font-size: 20px;
@@ -66,3 +66,7 @@
 .log-in-form button:hover {
     box-shadow: -10px 10px rgb(239, 187, 18);
 }
+
+.log-in-form button:active {
+    box-shadow: -10px 10px white;
+  }

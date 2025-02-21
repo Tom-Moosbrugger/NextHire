@@ -29,18 +29,59 @@ function Navigation() {
         <PiHandshakeLight />
       </NavLink>
       <div className="middle-nav-bar">
-        <button>Applications</button>
-        <button>
+        <NavLink
+          to="/applications"
+          onClick={() => {
+            setApplications(true);
+            setCommonQuestions(false);
+            setResumes(false);
+            setCoverLetters(false);
+          }}
+          className={applications ? "active" : ""}
+        >
+          Applications
+        </NavLink>
+        <NavLink
+          to="/common-questions"
+          onClick={() => {
+            setApplications(false);
+            setCommonQuestions(true);
+            setResumes(false);
+            setCoverLetters(false);
+            return navigate("/applications");
+          }}
+          className={commonQuestions ? "active" : ""}
+        >
           Common
           <br />
           Questions
-        </button>
-        <button>Resumes</button>
-        <button>
+        </NavLink>
+        <NavLink
+          to="/resumes"
+          onClick={() => {
+            setApplications(false);
+            setCommonQuestions(false);
+            setResumes(true);
+            setCoverLetters(false);
+          }}
+          className={resumes ? "active" : ""}
+        >
+          Resumes
+        </NavLink>
+        <NavLink
+          to="/cover-letters"
+          onClick={() => {
+            setApplications(false);
+            setCommonQuestions(false);
+            setResumes(false);
+            setCoverLetters(true);
+          }}
+          className={coverLetters ? "active" : ""}
+        >
           Cover
           <br />
           Letters
-        </button>
+        </NavLink>
       </div>
       <button id="log-out" onClick={logout}>
         Log Out
