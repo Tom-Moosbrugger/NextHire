@@ -1,8 +1,16 @@
 .nav-bar {
   border-bottom: 1px solid #4d4d4d;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 30px 20px
+  padding: 30px 20px;
+}
+
+.middle-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 50px;
 }
 
 .nav-bar svg {
@@ -15,14 +23,22 @@
 
 .nav-bar button {
   background-color: black;
-    border: 1px solid white;
-    color: white;
-    font-size: 16px;
-    height: 30px;
-    cursor: pointer;
-    width: 100px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 120px;
 }
 
-#log-out:hover {
-    box-shadow: -5px 5px rgb(239, 187, 18);
+.nav-bar button:hover {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.nav-bar #log-out {
+  width: 100px;
+}
+
+.nav-bar #log-out:hover {
+  box-shadow: -5px 5px rgb(239, 187, 18);
+  width: 100px;
 }
