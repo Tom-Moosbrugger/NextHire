@@ -19,14 +19,12 @@ class ApplicationQuestion(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.today)
     updated_at = db.Column(db.DateTime, default=datetime.today, onupdate=datetime.today)
 
-    application = db.relationship("Application", back_populates="cover_letters")
+    application = db.relationship("Application", back_populates="questions")
 
     def to_dict(self):
         return {
             "id": self.id,
             "applicationId": self.application_id,
             "question": self.question,
-            "response": self.response
+            "response": self.response,
         }
-    
-
