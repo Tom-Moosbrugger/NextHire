@@ -45,3 +45,18 @@ class Application(db.Model):
     offers = db.relationship(
         "ApplicationOffer", back_populates="application", cascade="all, delete-orphan"
     )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.user_id,
+            "applicationStatus": self.application_status,
+            "companyName": self.company_name,
+            "jobTitle": self.job_title,
+            "jobDetails": self.job_details,
+            "jobPostUrl": self.job_post_url,
+            "submissionDetails": self.submission_details,
+            "applicationDeadline": self.application_deadline,
+            "coverLetterUrl": self.cover_letter_url,
+            "resumeUrl": self.resume_url
+        }
