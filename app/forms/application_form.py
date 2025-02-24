@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed, FileRequired
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, DateField, SelectField, TextAreaField
 from wtforms.validators import InputRequired, Length, URL
 from app.api.aws_helper_functions import ALLOWED_EXTENSIONS
@@ -13,6 +13,6 @@ class ApplicationForm(FlaskForm):
     job_post_url = StringField("job_post_url", validators=[URL(), Length(min=1, max=2083)])
     submission_details = TextAreaField("submission_details")
     application_deadline = DateField("application_deadline", validators=[InputRequired()])
-    cover_letter = FileField("cover_letter", validators=[FileAllowed()])
-    resume = FileField("resume", validators=[FileAllowed()])
+    cover_letter = FileField("cover_letter", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+    resume = FileField("resume", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
 
