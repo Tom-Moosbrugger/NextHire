@@ -11,7 +11,7 @@ class ApplicationInterview(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     application_id = db.Column(
         db.Integer,
-        db.ForeignKey(add_prefix_for_prod("applications.id", ondelete="CASCADE")),
+        db.ForeignKey(add_prefix_for_prod("applications.id"), ondelete="CASCADE"),
         nullable=False,
     )
     interview_date = db.Column(db.Date, nullable=False)

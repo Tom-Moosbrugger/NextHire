@@ -29,19 +29,19 @@ class Application(db.Model):
 
     questions = db.relationship(
         "ApplicationQuestion",
-        back_populates="applications",
+        back_populates="application",
         cascade="all, delete-orphan",
     )
     interviews = db.relationship(
         "ApplicationInterview",
-        back_populates="applications",
+        back_populates="application",
         cascade="all, delete-orphan",
     )
     rejections = db.relationship(
         "ApplicationRejection",
-        back_populates="applications",
+        back_populates="application",
         cascade="all, delete-orphan",
     )
     offers = db.relationship(
-        "ApplicationOffer", back_populates="applications", cascade="all, delete-orphan"
+        "ApplicationOffer", back_populates="application", cascade="all, delete-orphan"
     )
