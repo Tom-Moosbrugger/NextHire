@@ -14,25 +14,19 @@ class Application(db.Model):
         db.ForeignKey(add_prefix_for_prod("users.id"), ondelete="CASCADE"),
         nullable=False,
     )
+    application_status = db.Column(db.String(9), nullable=False)
     company_name = db.Column(db.String(80), nullable=False)
-    company_website = db.Column(db.String(2083), nullable=False)
+    company_website = db.Column(db.String(2083))
     job_title = db.Column(db.String(80), nullable=False)
     job_details = db.Column(db.Text)
     job_post_url = db.Column(db.String(2083))
     submission_details = db.Column(db.Text)
     application_deadline = db.Column(db.Date, nullable=False)
-    application_status = db.Column(db.String(9), nullable=False)
+    cover_letter_url = db.Column(db.String(2083))
+    resume_url = db.Column(db.String(2083))
     created_at = db.Column(db.DateTime, default=datetime.today)
     updated_at = db.Column(db.DateTime, default=datetime.today, onupdate=datetime.today)
 
-    resumes = db.relationship(
-        "ApplicationResume", back_populates="applications", cascade="all, delete-orphan"
-    )
-    cover_letters = db.relationship(
-        "ApplicationCoverLetter",
-        back_populates="applications",
-        cascade="all, delete-orphan",
-    )
     questions = db.relationship(
         "ApplicationQuestion",
         back_populates="applications",
