@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import LandingPage from "../components/LandingPage";
 import SignUpFormPage from "../components/SignUpFormPage";
 import LoginFormPage from "../components/LoginFormPage";
+import ApplicationTracker from "../components/ApplicationTracker";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/applications",
-        element: <h1>Applications</h1>,
+        element: <ApplicationTracker />,
       },
       {
         path: "/common-questions",
