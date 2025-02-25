@@ -2,10 +2,43 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.forms import ApplicationForm
 from app.models import db, Application
-from app.api.aws_helper_functions import upload_file_to_s3, get_unique_filename
+from app.api.aws_helper_functions import (
+    upload_file_to_s3,
+    get_unique_filename,
+    remove_file_from_s3,
+)
 
 
 application_routes = Blueprint("applications", __name__)
+
+
+@application_routes.route("/<int:application_id>", methods=["DELETE"])
+@login_required
+def delete_application(application_id):
+    application_to_delete = Application.query.get(application_id)
+
+    if application_to_delete is None:
+        return {"errors": "Application not found"}, 404
+
+    if application_to_delete.user_id != current_user.id:
+        return {"errors": "Application must belong to current user"}
+
+    if application_to_delete.cover_letter_url is not None:
+        aws_delete = remove_file_from_s3(application_to_delete.cover_letter_url)
+
+        if aws_delete is not True:
+            return aws_delete
+
+    if application_to_delete.resume_url is not None:
+        aws_delete = remove_file_from_s3(application_to_delete.resume_url)
+
+        if aws_delete is not True:
+            return aws_delete
+
+    db.session.delete(application_to_delete)
+    db.session.commit()
+
+    return {"message": "Successfully deleted"}
 
 
 @application_routes.route("", methods=["POST"])
@@ -24,18 +57,10 @@ def create_application():
             job_title=form.job_title.data,
             application_deadline=form.application_deadline.data,
             # optional fields
-            company_website=form.company_website.data
-            if form.company_website.data is not None
-            else None,
-            job_details=form.job_details.data
-            if form.job_details.data is not None
-            else None,
-            job_post_url=form.job_post_url.data
-            if form.job_post_url.data is not None
-            else None,
-            submission_details=form.submission_details.data
-            if form.submission_details.data is not None
-            else None,
+            company_website=form.company_website.data or None,
+            job_details=form.job_details.data or None,
+            job_post_url=form.job_post_url.data or None,
+            submission_details=form.submission_details.data or None,
             cover_letter_url=None,
             resume_url=None,
         )
@@ -70,5 +95,21 @@ def create_application():
 
         return {new_application.id: new_application.to_dict()}
 
-    return {"message": "testing"}
-    # return {"errors": form.errors}, 400
+    return form.errors, 400
+
+
+@application_routes.route("")
+@login_required
+def get_applications():
+    applications = (
+        Application.query.filter(Application.user_id == current_user.id)
+        .order_by(Application.application_deadline.asc())
+        .all()
+    )
+
+    # for app in applications:
+    #     print(app.application_deadline, type(app.application_deadline))
+
+    return {"applications": [application.to_dict() for application in applications]}
+
+    # return { "message": "testing" }
