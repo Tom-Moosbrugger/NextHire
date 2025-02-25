@@ -12,6 +12,13 @@ from app.api.aws_helper_functions import (
 application_routes = Blueprint("applications", __name__)
 
 
+@application_routes.route("/<int:application_id>", methods=["PUT"])
+@login_required
+def update_application(application_id):
+        
+
+    return { "message": "testing" }
+
 @application_routes.route("/<int:application_id>", methods=["DELETE"])
 @login_required
 def delete_application(application_id):
