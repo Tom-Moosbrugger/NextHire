@@ -1,8 +1,8 @@
 """create db tables
 
-Revision ID: af428d9eb575
+Revision ID: 79eeb79a6d61
 Revises: 
-Create Date: 2025-02-24 20:46:37.658057
+Create Date: 2025-02-25 13:09:44.630696
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'af428d9eb575'
+revision = '79eeb79a6d61'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,6 +43,7 @@ def upgrade():
     sa.Column('application_deadline', sa.Date(), nullable=False),
     sa.Column('cover_letter_url', sa.String(length=2083), nullable=True),
     sa.Column('resume_url', sa.String(length=2083), nullable=True),
+    sa.Column('date_submitted', sa.Date(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),

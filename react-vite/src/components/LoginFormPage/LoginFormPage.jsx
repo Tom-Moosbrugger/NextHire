@@ -57,7 +57,7 @@ function LoginFormPage() {
 
   return (
     <article className="log-in-form">
-      <div aria-hidden="true" className="log-in-container">
+      <div className="log-in-container">
         <h1>
           Log in to <em>Next</em>Hire
         </h1>

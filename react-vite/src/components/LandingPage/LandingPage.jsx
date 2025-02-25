@@ -32,7 +32,7 @@ const LandingPage = () => {
 
   return (
     <article className="landing-page">
-      <div aria-hidden="true" className="landing-page-container">
+      <div className="landing-page-container">
         <header>
           <h1>
             Welcome to <em>Next</em>Hire

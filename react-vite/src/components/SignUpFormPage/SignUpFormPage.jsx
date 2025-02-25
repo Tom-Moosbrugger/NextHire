@@ -77,7 +77,7 @@ function SignUpFormPage() {
 
   return (
     <article className="sign-up-form">
-      <div aria-hidden="true" className="sign-up-container">
+      <div className="sign-up-container">
         <header>
           <h1>
             Sign up for <em>Next</em>Hire

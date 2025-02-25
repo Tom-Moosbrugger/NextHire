@@ -17,6 +17,7 @@ def seed_applications():
             application_deadline=date(2025, 3, 15),
             cover_letter_url="https://nexthire-storage.s3.us-west-1.amazonaws.com/1bd20c31d1fc44138327d7c6633f7751.pdf",
             resume_url="http://nexthire-storage.s3.amazonaws.com/9280e8e695904978b65dbf0424af54e7.pdf",
+            date_submitted=date(2025, 3, 13),
         ),
         Application(
             user_id=1,

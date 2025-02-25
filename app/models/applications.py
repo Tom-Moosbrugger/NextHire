@@ -36,6 +36,7 @@ class Application(db.Model):
     application_deadline = db.Column(db.Date, nullable=False)
     cover_letter_url = db.Column(db.String(2083))
     resume_url = db.Column(db.String(2083))
+    date_submitted = db.Column(db.Date)
     created_at = db.Column(db.DateTime, default=datetime.today)
     updated_at = db.Column(db.DateTime, default=datetime.today, onupdate=datetime.today)
 
@@ -70,5 +71,6 @@ class Application(db.Model):
             "submissionDetails": self.submission_details,
             "applicationDeadline": self.application_deadline,
             "coverLetterUrl": self.cover_letter_url,
-            "resumeUrl": self.resume_url
+            "resumeUrl": self.resume_url,
+            "dateSubmitted": self.date_submitted
         }

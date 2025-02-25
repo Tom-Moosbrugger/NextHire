@@ -15,4 +15,4 @@ class ApplicationForm(FlaskForm):
     application_deadline = DateField("application_deadline", validators=[InputRequired()])
     cover_letter = FileField("cover_letter", validators=[Optional(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     resume = FileField("resume", validators=[Optional(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-
+    date_submitted = DateField("date_submitted")

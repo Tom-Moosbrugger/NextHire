@@ -38,6 +38,7 @@ def update_application(application_id):
         edited_application.job_details = form.job_details.data or None
         edited_application.job_post_url = form.job_post_url.data or None
         edited_application.submission_details = form.submission_details.data or None
+        edited_application.date_submitted = form.date_submitted.data
 
         # handling AWS changes
 
@@ -139,6 +140,7 @@ def create_application():
             submission_details=form.submission_details.data or None,
             cover_letter_url=None,
             resume_url=None,
+            date_submitted=form.date_submitted.data,
         )
 
         if form.cover_letter.data is not None:
