@@ -101,15 +101,8 @@ def create_application():
 @application_routes.route("")
 @login_required
 def get_applications():
-    applications = (
-        Application.query.filter(Application.user_id == current_user.id)
-        .order_by(Application.application_deadline.asc())
-        .all()
-    )
+    applications = Application.query.filter(
+        Application.user_id == current_user.id
+    ).all()
 
-    # for app in applications:
-    #     print(app.application_deadline, type(app.application_deadline))
-
-    return {"applications": [application.to_dict() for application in applications]}
-
-    # return { "message": "testing" }
+    return { application.id: application.to_dict() for application in applications }
