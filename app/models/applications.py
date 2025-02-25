@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy import Enum
 from datetime import datetime
 
 
@@ -14,7 +15,18 @@ class Application(db.Model):
         db.ForeignKey(add_prefix_for_prod("users.id"), ondelete="CASCADE"),
         nullable=False,
     )
-    application_status = db.Column(db.String(9), nullable=False)
+    # application_status = db.Column(db.String(9), nullable=False)
+    application_status = db.Column(
+        Enum(
+            "Upcoming",
+            "Submitted",
+            "Interviewing",
+            "Rejected",
+            "Offered",
+            name="application_status_enum",
+        ),
+        nullable=False,
+    )
     company_name = db.Column(db.String(80), nullable=False)
     company_website = db.Column(db.String(2083))
     job_title = db.Column(db.String(80), nullable=False)

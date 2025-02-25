@@ -6,6 +6,7 @@ from datetime import date
 def seed_applications():
     applications = [
         Application(
+            user_id=1,
             application_status="Submitted",
             company_name="Google",
             company_website="https://careers.google.com",
@@ -18,6 +19,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/9280e8e695904978b65dbf0424af54e7.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Interviewing",
             company_name="Amazon",
             company_website="https://www.amazon.jobs",
@@ -30,7 +32,8 @@ def seed_applications():
             resume_url="https://nexthire-storage.s3.us-west-1.amazonaws.com/2be649e3bef14cc29c71f3ee99bbd1d1.pdf",
         ),
         Application(
-            application_status="New",
+            user_id=1,
+            application_status="Upcoming",
             company_name="Apple",
             company_website="https://jobs.apple.com",
             job_title="iOS Developer",
@@ -42,6 +45,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/b977b50f8cb74cd5a1c6762d20b2e25f.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Rejected",
             company_name="Meta",
             company_website="https://www.metacareers.com",
@@ -54,7 +58,8 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/491cee5718be42e1933d856c39652d02.pdf",
         ),
         Application(
-            application_status="Accepted",
+            user_id=1,
+            application_status="Offered",
             company_name="Microsoft",
             company_website="https://careers.microsoft.com",
             job_title="Cloud Engineer",
@@ -66,6 +71,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/eca12980951347ce8778b34d8d266e5b.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Upcoming",
             company_name="Spotify",
             company_website="https://www.spotify.com",
@@ -78,6 +84,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/31115c5ba7d34521a91df0cdc3a01f0f.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Upcoming",
             company_name="Airbnb",
             company_website="https://www.airbnb.com",
@@ -90,6 +97,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/e004285abace4ff0ad1303600f0dfee0.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Upcoming",
             company_name="Slack",
             company_website="https://www.slack.com",
@@ -102,6 +110,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/62f1ba0a71d5404794d192464db792da.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Upcoming",
             company_name="Adobe",
             company_website="https://www.adobe.com",
@@ -114,6 +123,7 @@ def seed_applications():
             resume_url="http://nexthire-storage.s3.amazonaws.com/595866b8dd7341398be49e907647cb4c.pdf",
         ),
         Application(
+            user_id=1,
             application_status="Upcoming",
             company_name="Zoom",
             company_website="https://www.zoom.us",
