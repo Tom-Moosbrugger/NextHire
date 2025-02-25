@@ -14,7 +14,9 @@ const LandingPage = () => {
     dispatch(sessionActions.thunkAuthenticate());
   }, [dispatch]);
 
-  if (user) return navigate("/applications");
+  useEffect(() => {
+    if (user) return navigate("/applications");
+  }, [user, navigate])
 
   const loginDemo = async () => {
     const serverResponse = await dispatch(
