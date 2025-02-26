@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import OpenModalButton from "../OpenModalButton"
+import OpenModalButton from "../OpenModalButton";
 import { CreateApplication } from "../ApplicationForm";
+import { NavLink } from "react-router-dom";
 import * as applicationActions from "../../redux/applications";
 import "./ApplicationTracker.css";
 

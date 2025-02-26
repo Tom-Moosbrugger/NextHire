@@ -4,6 +4,8 @@ import LandingPage from "../components/LandingPage";
 import SignUpFormPage from "../components/SignUpFormPage";
 import LoginFormPage from "../components/LoginFormPage";
 import ApplicationTracker from "../components/ApplicationTracker";
+import ApplicationDetails from "../components/ApplicationDetails";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,24 +21,33 @@ export const router = createBrowserRouter([
     path: "/log-in",
   },
   {
-    element: <Layout />,
+    element: <ProtectedRoute />,
     children: [
       {
-        path: "/applications",
-        element: <ApplicationTracker />,
+        element: <Layout />,
+        children: [
+          {
+            path: "/applications/:applicationId",
+            element: <ApplicationDetails />,
+          },
+          {
+            path: "/applications",
+            element: <ApplicationTracker />,
+          },
+          {
+            path: "/common-questions",
+            element: <h1>Common Questions</h1>,
+          },
+          {
+            path: "/resumes",
+            element: <h1>Resumes</h1>,
+          },
+          {
+            path: "/cover-letters",
+            element: <h1>Cover Letters</h1>,
+          },
+        ],
       },
-      {
-        path: "/common-questions",
-        element: <h1>Common Questions</h1>,
-      },
-      {
-        path: "/resumes",
-        element: <h1>Resumes</h1>,
-      },
-      {
-        path: "/cover-letters",
-        element: <h1>Cover Letters</h1>,
-      },
-    ],
-  },
+    ]
+  }
 ]);

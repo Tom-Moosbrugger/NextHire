@@ -3,6 +3,7 @@ const ApplicationFormInput = ({
   type,
   placeholder,
   value,
+  accept,
   handleChange,
 }) => {
   return (
@@ -13,6 +14,7 @@ const ApplicationFormInput = ({
           type={type}
           placeholder={placeholder}
           value={value}
+          accept={accept}
           onChange={handleChange}
         />
       </label>

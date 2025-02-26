@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useModal } from "../../context/Modal";
 import ApplicationFormInput from "./ApplicationFormInput";
 import ApplicationFormTextArea from "./ApplicationFormTextarea";
 import ApplicationFormHeader from "./ApplicationFormHeader";
+import ApplicationFormError from "./ApplicationFormError";
+import { validateApplicationInputs } from "../../resources/helperFunctions";
+import * as applicationActions from "../../redux/applications";
 import "./ApplicationForm.css";
 
 const ApplicationForm = ({ application, applicationId, formType }) => {
@@ -25,12 +31,22 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
   const [coverLetter, setCoverLetter] = useState(null);
   const [resume, setResume] = useState(null);
   const [errors, setErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const { closeModal } = useModal();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     const validationErrors = {};
+  useEffect(() => {
+    const validationErrors = validateApplicationInputs(
+      companyName,
+      companyWebsite,
+      jobTitle,
+      jobPostUrl,
+      applicationDeadline
+    );
 
-  //     if
-  //   })
+    setErrors(validationErrors);
+  }, [companyName, companyWebsite, jobTitle, jobPostUrl, applicationDeadline]);
 
   const header =
     formType === "createApplication" ? (
@@ -52,10 +68,67 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
     "Offered",
   ];
 
+  const setDummyApplicationData = () => {
+    setCompanyName("Test Company");
+    setCompanyWebsite("https://www.testcompany.com/");
+    setJobTitle("Junior Software Engineer");
+    setJobDetails("Test job details");
+    setJobPostUrl("https://www.testcompany.com/job-post");
+    setSubmissionDetails("Test submission details");
+  }
+
   const handleRadioChange = (e) => setApplicationStatus(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // render errors, if any
+    if (Object.values(errors).length) return setHasSubmitted(true);
+
+    // create new form to send to backend
+    const application = new FormData();
+
+    application.append("application_status", applicationStatus);
+    application.append("company_name", companyName);
+    application.append("company_website", companyWebsite);
+    application.append("job_title", jobTitle);
+    application.append("job_details", jobDetails);
+    application.append("job_post_url", jobPostUrl);
+    application.append("submission_details", submissionDetails);
+    application.append("application_deadline", applicationDeadline);
+    application.append("resume", resume);
+    application.append("cover_letter", coverLetter);
+    if (dateSubmitted) application.append("date_submitted", dateSubmitted);
+
+    if (formType === "createApplication") {
+      const newApplication = await dispatch(
+        applicationActions.thunkCreateApplication(application)
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data?.errors)
+          return setErrors({
+            serverError: "There was a server issue, please try again.",
+          });
+      });
+
+      return closeModal();
+
+      //   navigate(`/applications/${Object.keys(newApplication)[0]}`);
+    } else {
+      const updatedApplication = await dispatch(
+        applicationActions.thunkUpdateApplication(application)
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data?.errors)
+          return setErrors({
+            serverError: "There was a server issue, please try again.",
+          });
+      });
+
+    //   return closeModal();
+
+      //   navigate(`/applications/${Object.keys(newApplication)[0]}`);
+    }
   };
 
   return (
@@ -97,12 +170,20 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             value={companyName}
             handleChange={(e) => setCompanyName(e.target.value)}
           />
+          <ApplicationFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.companyName}
+          />
           <ApplicationFormInput
             label="Company Website"
             type="text"
             placeholder="Enter the company's website..."
             value={companyWebsite}
             handleChange={(e) => setCompanyWebsite(e.target.value)}
+          />
+          <ApplicationFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.companyWebsite}
           />
           <ApplicationFormInput
             label="Job Title*"
@@ -111,12 +192,20 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             value={jobTitle}
             handleChange={(e) => setJobTitle(e.target.value)}
           />
+          <ApplicationFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.jobTitle}
+          />
           <ApplicationFormInput
             label="Job Post Link"
             type="text"
             placeholder="Enter the url for the job post.."
             value={jobPostUrl}
             handleChange={(e) => setJobPostUrl(e.target.value)}
+          />
+          <ApplicationFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.jobPostUrl}
           />
           <ApplicationFormTextArea
             label="Job Details"
@@ -138,6 +227,10 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             value={applicationDeadline}
             handleChange={(e) => setApplicationDeadline(e.target.value)}
           />
+          <ApplicationFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.applicationDeadline}
+          />
         </section>
         <section>
           <ApplicationFormHeader
@@ -147,14 +240,14 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           <ApplicationFormInput
             label="Resume"
             type="file"
-            value={resume}
-            handleChange={(e) => setResume(e.target.value)}
+            accept=".pdf"
+            handleChange={(e) => setResume(e.target.files[0])}
           />
           <ApplicationFormInput
             label="Cover Letter"
             type="file"
-            value={coverLetter}
-            handleChange={(e) => setCoverLetter(e.target.value)}
+            accept=".pdf"
+            handleChange={(e) => setCoverLetter(e.target.files[0])}
           />
           <ApplicationFormInput
             label="Date Submitted"
@@ -165,6 +258,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
         </section>
         <button onClick={handleSubmit}>{buttonText}</button>
       </form>
+      <button onClick={setDummyApplicationData}>Set Dummy Data</button>
     </article>
   );
 };

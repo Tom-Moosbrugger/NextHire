@@ -10,7 +10,7 @@ const CreateApplication = () => {
     jobPostUrl: "",
     submissionDetails: "",
     applicationDeadline: "",
-    dateSubmitted: "",
+    dateSubmitted: null,
     resumeUrl: null,
     coverLetterUrl: null,
   };

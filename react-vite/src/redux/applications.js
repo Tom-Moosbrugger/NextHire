@@ -52,16 +52,17 @@ export const thunkCreateApplication = (newApplication) => async (dispatch) => {
   if (response.ok) {
     const newApplication = await response.json();
     dispatch(createOrUpdateApplication(newApplication));
-    return newApplication.id;
+    return newApplication;
   } else if (response.status < 500) {
     const errorMessages = await response.json();
+    console.log(errorMessages);
     return errorMessages;
   } else {
     return { server: "Something went wrong. Please try again" };
   }
 };
 
-const thunkUpdateApplication =
+export const thunkUpdateApplication =
   (updatedApplication, updatedApplicationId) => async (dispatch) => {
     const response = await fetch(`/api/applications/${updatedApplicationId}`, {
       method: "PUT",
@@ -71,7 +72,7 @@ const thunkUpdateApplication =
     if (response.ok) {
       const updatedApplication = await response.json();
       dispatch(createOrUpdateApplication(updatedApplication));
-      return updatedApplication.id;
+      return updatedApplication;
     } else if (response.status < 500) {
       const errorMessages = await response.json();
       return errorMessages;
