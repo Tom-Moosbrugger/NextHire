@@ -1,0 +1,21 @@
+.delete-form {
+    border: .5px solid white;
+    padding: 40px;
+}
+
+.delete-form h1 {
+    font-size: 40px;
+}
+
+.delete-error {
+    color: red;
+    min-height: 30px;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+.delete-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}

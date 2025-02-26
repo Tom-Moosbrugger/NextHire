@@ -1,0 +1,6 @@
+.application-details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 40px
+}

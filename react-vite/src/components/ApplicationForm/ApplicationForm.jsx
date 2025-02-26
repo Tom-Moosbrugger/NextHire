@@ -75,7 +75,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
     setJobDetails("Test job details");
     setJobPostUrl("https://www.testcompany.com/job-post");
     setSubmissionDetails("Test submission details");
-  }
+  };
 
   const handleRadioChange = (e) => setApplicationStatus(e.target.value);
 
@@ -111,12 +111,12 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           });
       });
 
-      return closeModal();
+      closeModal();
 
-      //   navigate(`/applications/${Object.keys(newApplication)[0]}`);
+      navigate(`/applications/${Object.keys(newApplication)[0]}`);
     } else {
       const updatedApplication = await dispatch(
-        applicationActions.thunkUpdateApplication(application)
+        applicationActions.thunkUpdateApplication(application, applicationId)
       ).catch(async (res) => {
         const data = await res.json();
         if (data?.errors)
@@ -125,9 +125,9 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           });
       });
 
-    //   return closeModal();
+      closeModal();
 
-      //   navigate(`/applications/${Object.keys(newApplication)[0]}`);
+      navigate(`/applications/${Object.keys(updatedApplication)[0]}`);
     }
   };
 

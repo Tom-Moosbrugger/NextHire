@@ -65,12 +65,13 @@ class Application(db.Model):
             "userId": self.user_id,
             "applicationStatus": self.application_status,
             "companyName": self.company_name,
+            "companyWebsite": self.company_website,
             "jobTitle": self.job_title,
             "jobDetails": self.job_details,
             "jobPostUrl": self.job_post_url,
             "submissionDetails": self.submission_details,
-            "applicationDeadline": self.application_deadline,
+            "applicationDeadline": self.application_deadline.strftime("%Y-%m-%d") if self.application_deadline else None,
             "coverLetterUrl": self.cover_letter_url,
             "resumeUrl": self.resume_url,
-            "dateSubmitted": self.date_submitted
+            "dateSubmitted": self.date_submitted.strftime("%Y-%m-%d") if self.date_submitted else None,
         }
