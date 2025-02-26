@@ -7,3 +7,10 @@
     width: 400px;
     cursor: pointer;
   }
+
+  .application-columns {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+  }

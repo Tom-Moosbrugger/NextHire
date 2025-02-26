@@ -1,0 +1,8 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 200px;
+    height: 500px;
+    border: .5px solid white;
+}

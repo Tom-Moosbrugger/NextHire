@@ -1,3 +1,5 @@
+import { createSelector } from "reselect";
+
 // action constants
 
 const LOAD_APPLICATIONS = "applications/loadApplications";
@@ -96,6 +98,45 @@ export const thunkDeleteApplication =
       return { server: "Something went wrong. Please try again" };
     }
   };
+
+// selectors
+
+const getApplicationState = (state) => state.applications;
+
+export const upcoming = createSelector(
+  [getApplicationState],
+  (applicationState) => Object.values(applicationState).filter(application => {
+    return application.applicationStatus === "Upcoming"
+  })
+);
+
+export const submitted = createSelector(
+  [getApplicationState],
+  (applicationState) => Object.values(applicationState).filter(application => {
+    return application.applicationStatus === "Submitted"
+  })
+);
+
+export const interviewing = createSelector(
+  [getApplicationState],
+  (applicationState) => Object.values(applicationState).filter(application => {
+    return application.applicationStatus === "Interviewing"
+  })
+);
+
+export const rejected = createSelector(
+  [getApplicationState],
+  (applicationState) => Object.values(applicationState).filter(application => {
+    return application.applicationStatus === "Rejected"
+  })
+);
+
+export const offered = createSelector(
+  [getApplicationState],
+  (applicationState) => Object.values(applicationState).filter(application => {
+    return application.applicationStatus === "Offered"
+  })
+);
 
 // reducer
 
