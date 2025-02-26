@@ -83,6 +83,26 @@ export const thunkUpdateApplication =
     }
   };
 
+export const thunkUpdateApplicationStatus =
+  (newStatus, updatedApplicationId) => async (dispatch) => {
+    console.log(newStatus);
+
+    const response = await fetch(`/api/applications/${updatedApplicationId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newStatus),
+    });
+
+    if (response.ok) {
+      const updatedApplication = await response.json();
+      return dispatch(createOrUpdateApplication(updatedApplication));
+    } else {
+      return { server: "Something went wrong. Please try again" };
+    }
+  };
+
 export const thunkDeleteApplication =
   (deletedApplicationId) => async (dispatch) => {
     const response = await fetch(`/api/applications/${deletedApplicationId}`, {
@@ -105,37 +125,42 @@ const getApplicationState = (state) => state.applications;
 
 export const upcoming = createSelector(
   [getApplicationState],
-  (applicationState) => Object.values(applicationState).filter(application => {
-    return application.applicationStatus === "Upcoming"
-  })
+  (applicationState) =>
+    Object.values(applicationState).filter((application) => {
+      return application.applicationStatus === "Upcoming";
+    })
 );
 
 export const submitted = createSelector(
   [getApplicationState],
-  (applicationState) => Object.values(applicationState).filter(application => {
-    return application.applicationStatus === "Submitted"
-  })
+  (applicationState) =>
+    Object.values(applicationState).filter((application) => {
+      return application.applicationStatus === "Submitted";
+    })
 );
 
 export const interviewing = createSelector(
   [getApplicationState],
-  (applicationState) => Object.values(applicationState).filter(application => {
-    return application.applicationStatus === "Interviewing"
-  })
+  (applicationState) =>
+    Object.values(applicationState).filter((application) => {
+      return application.applicationStatus === "Interviewing";
+    })
 );
 
 export const rejected = createSelector(
   [getApplicationState],
-  (applicationState) => Object.values(applicationState).filter(application => {
-    return application.applicationStatus === "Rejected"
-  })
+  (applicationState) =>
+    Object.values(applicationState).filter((application) => {
+      return application.applicationStatus === "Rejected";
+    })
 );
 
 export const offered = createSelector(
   [getApplicationState],
-  (applicationState) => Object.values(applicationState).filter(application => {
-    return application.applicationStatus === "Offered"
-  })
+  (applicationState) =>
+    Object.values(applicationState).filter((application) => {
+      return application.applicationStatus === "Offered";
+    })
 );
 
 // reducer
@@ -155,4 +180,4 @@ const applicationsReducer = (state = {}, action) => {
   }
 };
 
-export default applicationsReducer
+export default applicationsReducer;

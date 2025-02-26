@@ -4,7 +4,6 @@ import { CSS } from "@dnd-kit/utilities";
 const ApplicationTile = ({ application }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: application.id,
-    data: application
   });
 
   const style = {

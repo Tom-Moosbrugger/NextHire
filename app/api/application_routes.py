@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.forms import ApplicationForm
+from app.forms import ApplicationForm, ApplicationStatusForm
 from app.models import db, Application
 from app.api.aws_helper_functions import (
     upload_file_to_s3,
@@ -10,6 +10,33 @@ from app.api.aws_helper_functions import (
 
 
 application_routes = Blueprint("applications", __name__)
+
+@application_routes.route("/<int:application_id>", methods=["PATCH"])
+@login_required
+def update_application_status(application_id):
+    form = ApplicationStatusForm()
+
+    print(form.application_status.data)
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    edited_application = Application.query.get(application_id)
+
+    if edited_application is None:
+        return {"errors": "Application not found"}, 404
+
+    if edited_application.user_id != current_user.id:
+        return {"message": "Application must belong to the current user"}
+    
+    if form.validate_on_submit():
+
+        edited_application.application_status = form.application_status.data
+
+        db.session.commit()
+
+        return {edited_application.id: edited_application.to_dict()}
+
+    return form.errors, 400
 
 
 @application_routes.route("/<int:application_id>", methods=["PUT"])
