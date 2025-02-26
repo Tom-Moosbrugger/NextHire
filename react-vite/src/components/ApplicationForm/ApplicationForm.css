@@ -1,8 +1,46 @@
-#create-application {
-  background-color: black;
+.application-form {
+  width: 100%;
+  height: 100%;
   border: 0.5px solid white;
-  color: white;
-  font-size: 20px;
-  height: 50px;
-  cursor: pointer;
+  padding: 40px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.application-form::-webkit-scrollbar {
+  width: 15px; /* Horizontal scrollbar height */
+}
+
+.application-form::-webkit-scrollbar-thumb {
+  background: black;
+  border: 0.5px solid white;
+}
+
+.application-form::-webkit-scrollbar-thumb:hover {
+    cursor: grab;
+}
+
+.application-form::-webkit-scrollbar-track {
+  background: #2d2d2d
+}
+
+.application-form-main-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.application-form h1 {
+  font-size: 50px;
+  text-align: left;
+}
+
+.application-form header p {
+  font-style: italic;
+}
+
+.application-form-input label {
+  display: flex;
+  flex-direction: column;
 }

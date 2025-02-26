@@ -2,16 +2,17 @@ import ApplicationForm from "./ApplicationForm";
 
 const CreateApplication = () => {
   const application = {
-    application_status: "Upcoming",
-    company_name: "",
-    company_website: "",
-    job_title: "",
-    job_details: "",
-    job_post_url: "",
-    submission_details: "",
-    application_deadline: "",
-    cover_letter: null,
-    resume: null,
+    applicationStatus: "Upcoming",
+    companyName: "",
+    companyWebsite: "",
+    jobTitle: "",
+    jobDetails: "",
+    jobPostUrl: "",
+    submissionDetails: "",
+    applicationDeadline: "",
+    dateSubmitted: "",
+    resumeUrl: null,
+    coverLetterUrl: null,
   };
 
   return (

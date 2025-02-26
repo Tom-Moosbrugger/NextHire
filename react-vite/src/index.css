@@ -24,6 +24,7 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="text"],
+input[type=radio],
 textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -31,6 +32,7 @@ textarea {
   border: none;
 }
 
+textarea,
 input:focus {
   outline: none;
   box-shadow: none;
@@ -58,4 +60,19 @@ a {
 
 em {
   font-weight: 1000;
+}
+
+input[type=radio] {
+  width: 15px;
+  height: 15px;
+  border: solid 1px white;
+  cursor: pointer;
+}
+
+input[type=radio]:checked {
+  background-color: goldenrod;
+}
+
+textarea {
+  resize: none;
 }
