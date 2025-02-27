@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   min-width: 950px;
+  margin-bottom: 10px;
 }
 
 .application-details header h1 {
@@ -109,13 +110,13 @@
 }
 
 .checkbox {
-  border: 0.5px solid white;
+  border: 0.5px solid #3197da;
   width: 30px;
   height: 30px;
 }
 
 #Upcoming-box {
-  background-color: #6c6c6c;
+  background-color: white;
 }
 
 #Submitted-box {
@@ -131,7 +132,7 @@
 }
 
 #Offered-box {
-  background-color: green;
+  background-color: rgb(18, 186, 18);
 }
 
 .company-and-job {

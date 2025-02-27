@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useNavigate } from "react-router-dom";
+import { TfiClose } from "react-icons/tfi";
 import * as applicationActions from "../../redux/applications";
 import "./DeleteForm.css";
 
@@ -39,8 +40,9 @@ const DeleteForm = ({ formType, resourceId }) => {
 
   return (
     <article className="delete-form">
+      <TfiClose onClick={() => closeModal()} id="close-delete-form"/>
       <header>
-        <h1>Delete This {formType}?</h1>
+        <h1>Delete {formType}?</h1>
       </header>
       <div className="delete-error">
         {errors.serverError && <p>{errors.serverError}</p>}

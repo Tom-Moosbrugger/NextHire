@@ -25,6 +25,7 @@ input[type="password"],
 input[type="submit"],
 input[type="text"],
 input[type=radio],
+input[type="date"],
 textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -63,14 +64,10 @@ em {
 }
 
 input[type=radio] {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border: solid 1px white;
   cursor: pointer;
-}
-
-input[type=radio]:checked {
-  background-color: goldenrod;
 }
 
 textarea {

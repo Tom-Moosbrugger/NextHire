@@ -7,6 +7,7 @@ import ApplicationFormTextArea from "./ApplicationFormTextarea";
 import ApplicationFormHeader from "./ApplicationFormHeader";
 import ApplicationFormError from "./ApplicationFormError";
 import { validateApplicationInputs } from "../../resources/helperFunctions";
+import { TfiClose } from "react-icons/tfi";
 import * as applicationActions from "../../redux/applications";
 import "./ApplicationForm.css";
 
@@ -50,15 +51,15 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
 
   const header =
     formType === "createApplication" ? (
-      <h1>Create A New Application</h1>
+      <h1>Create New Application</h1>
     ) : (
       <h1>Update Your Application</h1>
     );
 
   const buttonText =
     formType === "createApplication"
-      ? "Create Your Application"
-      : "Update Your Application";
+      ? "Create Application"
+      : "Update  Application";
 
   const radioOptions = [
     "Upcoming",
@@ -135,7 +136,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
     <article className="application-form">
       <header className="application-form-main-header">
         {header}
-        <p>Fields marked with an asterisk* are required</p>
+        <TfiClose onClick={() => closeModal()} id="close-application-form"/>
       </header>
       <form>
         <section>
@@ -147,6 +148,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             {radioOptions.map((option, index) => (
               <label key={index}>
                 <input
+                  id={`${option}-radio`}
                   type="radio"
                   name="application-status"
                   value={option}
@@ -208,6 +210,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             error={errors.jobPostUrl}
           />
           <ApplicationFormTextArea
+            id="job-details"           
             label="Job Details"
             type="text"
             placeholder="Enter the details from the job post..."
@@ -215,6 +218,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             handleChange={(e) => setJobDetails(e.target.value)}
           />
           <ApplicationFormTextArea
+            id="submission-details"
             label="Submission Details"
             type="text"
             placeholder="Enter details about where and how to submit your application..."
@@ -232,7 +236,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             error={errors.applicationDeadline}
           />
         </section>
-        <section>
+        <section className="application-form-materials">
           <ApplicationFormHeader
             h2text="Application Materials"
             h3text="Track your resume, cover letter, and submission date here:"
@@ -256,9 +260,11 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             handleChange={(e) => setDateSubmitted(e.target.value)}
           />
         </section>
-        <button onClick={handleSubmit}>{buttonText}</button>
+        <section className="application-form-submit">
+          <button onClick={handleSubmit}>{buttonText}</button>
+          <button onClick={setDummyApplicationData}>Set Dummy Data</button>
+        </section>
       </form>
-      <button onClick={setDummyApplicationData}>Set Dummy Data</button>
     </article>
   );
 };

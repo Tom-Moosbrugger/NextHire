@@ -21,12 +21,32 @@
   row-gap: 20px;
 }
 
+#Upcoming:hover {
+  box-shadow: -5px 5px white;
+}
+
+#Submitted:hover {
+  box-shadow: -5px 5px #3197da;
+}
+
+#Interviewing:hover {
+  box-shadow: -5px 5px yellow;
+}
+
+#Rejected:hover {
+  box-shadow: -5px 5px rgba(255, 0, 0, 1);
+}
+
+#Offered:hover {
+  box-shadow: -5px 5px rgb(18, 186, 18);
+}
+
 #Upcoming li:hover {
-  box-shadow: -5px 5px #6c6c6c;
+  box-shadow: -5px 5px white;
 }
 
 #Submitted li:hover {
-  box-shadow: -5px 5px white;
+  box-shadow: -5px 5px #3197da;
 }
 
 #Interviewing li:hover {
@@ -38,5 +58,5 @@
 }
 
 #Offered li:hover {
-  box-shadow: -5px 5px green;
+  box-shadow: -5px 5px rgb(18, 186, 18);
 }

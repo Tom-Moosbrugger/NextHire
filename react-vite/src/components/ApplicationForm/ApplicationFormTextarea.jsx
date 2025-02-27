@@ -4,16 +4,17 @@ const ApplicationFormTextarea = ({
     placeholder,
     value,
     handleChange,
+    id
   }) => {
     return (
-      <div className="application-form-input">
+      <div id={id} className="application-form-input">
         <label>
           {label}
           <textarea
-            type={type}
             placeholder={placeholder}
             value={value}
             onChange={handleChange}
+            rows="10"
           />
         </label>
       </div>
