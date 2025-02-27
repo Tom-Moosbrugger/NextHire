@@ -6,3 +6,4 @@ from .application_questions import ApplicationQuestion
 from .application_interviews import ApplicationInterview
 from .application_rejections import ApplicationRejection
 from .application_offers import ApplicationOffer
+from .common_questions import CommonQuestion

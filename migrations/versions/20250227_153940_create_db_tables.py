@@ -1,8 +1,8 @@
 """create db tables
 
-Revision ID: 79eeb79a6d61
+Revision ID: c86e4208230d
 Revises: 
-Create Date: 2025-02-25 13:09:44.630696
+Create Date: 2025-02-27 15:39:40.752400
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '79eeb79a6d61'
+revision = 'c86e4208230d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,6 +44,16 @@ def upgrade():
     sa.Column('cover_letter_url', sa.String(length=2083), nullable=True),
     sa.Column('resume_url', sa.String(length=2083), nullable=True),
     sa.Column('date_submitted', sa.Date(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('common_questions',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('question', sa.String(length=500), nullable=False),
+    sa.Column('response', sa.Text(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
@@ -105,6 +115,7 @@ def upgrade():
         op.execute(f"ALTER TABLE application_offers SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE application_questions SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE application_rejections SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE common_questions SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
@@ -114,6 +125,7 @@ def downgrade():
     op.drop_table('application_questions')
     op.drop_table('application_offers')
     op.drop_table('application_interviews')
+    op.drop_table('common_questions')
     op.drop_table('applications')
     op.drop_table('users')
     # ### end Alembic commands ###
