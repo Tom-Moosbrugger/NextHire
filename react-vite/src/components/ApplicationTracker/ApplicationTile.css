@@ -9,10 +9,5 @@
 }
 
 .application-tile:hover {
-    box-shadow: -5px 5px goldenrod;
     list-style: none;
-}
-
-.application-tile:active {
-    box-shadow: -5px 5px white;
 }

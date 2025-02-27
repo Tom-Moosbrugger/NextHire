@@ -8,20 +8,7 @@
 }
 
 .application-form::-webkit-scrollbar {
-  width: 15px; /* Horizontal scrollbar height */
-}
-
-.application-form::-webkit-scrollbar-thumb {
-  background: black;
-  border: 0.5px solid white;
-}
-
-.application-form::-webkit-scrollbar-thumb:hover {
-    cursor: grab;
-}
-
-.application-form::-webkit-scrollbar-track {
-  background: #2d2d2d
+  display: none;
 }
 
 .application-form-main-header {

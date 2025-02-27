@@ -12,7 +12,7 @@ const ApplicationColumn = ({ id }) => {
   });
 
   return (
-    <div className="column">
+    <div className="column" id={id}>
       <ul ref={setNodeRef}>
         {applications.length > 0 && applications.map(application => (
             <ApplicationTile key={application.id} application={application} />
