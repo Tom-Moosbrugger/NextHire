@@ -110,7 +110,7 @@
 }
 
 .checkbox {
-  border: 0.5px solid #3197da;
+  border: 0.5px solid white;
   width: 30px;
   height: 30px;
 }
@@ -120,7 +120,7 @@
 }
 
 #Submitted-box {
-  background-color: white;
+  background-color: #3197da;
 }
 
 #Interviewing-box {
