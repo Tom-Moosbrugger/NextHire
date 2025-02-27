@@ -73,7 +73,7 @@ const ApplicationTracker = () => {
       <header>
         <OpenModalButton
           modalComponent={<CreateApplication />}
-          buttonText="Start a New Application"
+          buttonText="Create New Application"
           id="create-application"
         />
       </header>
