@@ -1,16 +1,33 @@
-#create-application {
-    background-color: black;
-    border: 0.5px solid white;
-    color: white;
-    font-size: 20px;
-    height: 40px;
-    width: 400px;
-    cursor: pointer;
-  }
+.application-tracker header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px
+}
 
-  .application-columns {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    column-gap: 20px;
-  }
+#create-application {
+  background-color: black;
+  border: 0.5px solid white;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 500px;
+  cursor: pointer;
+}
+
+.application-tracker {
+  position: relative;
+}
+
+.application-columns {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.column-container h2 {
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+}

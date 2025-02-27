@@ -1,4 +1,5 @@
 import {
+  DragOverlay,
   closestCorners,
   DndContext,
   KeyboardSensor,
@@ -7,19 +8,32 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import { CreateApplication } from "../ApplicationForm";
 import ApplicationColumn from "./ApplicationColumn";
+import ApplicationTile from "./ApplicationTile";
 import * as applicationActions from "../../redux/applications";
 import "./ApplicationTracker.css";
 
 const ApplicationTracker = () => {
   const dispatch = useDispatch();
+  const [activeApplication, setActiveApplication] = useState(null);
 
   const sensors = useSensors(
-    useSensor(MouseSensor),
-    useSensor(TouchSensor),
+    useSensor(MouseSensor, {
+        activationConstraint: {
+            delay: 200,
+            tolerance: 5
+        }
+    }),
+    useSensor(TouchSensor, {
+        activationConstraint: {
+            delay: 200,
+            tolerance: 5
+        }
+    }),
     useSensor(KeyboardSensor)
   );
 
@@ -30,6 +44,10 @@ const ApplicationTracker = () => {
     "Rejected",
     "Offered",
   ];
+
+  const handleDragStart = (event) => {
+    setActiveApplication(event.active.data.current);
+  };
 
   const handleDragEnd = async (event) => {
     const { active, over } = event;
@@ -47,29 +65,39 @@ const ApplicationTracker = () => {
       )
     );
 
-    return;
+    setActiveApplication(null);
   };
 
   return (
-    <>
-      {/* <h1>Applications</h1>
-      <OpenModalButton
-        modalComponent={<CreateApplication />}
-        buttonText="Start a New Application"
-        id="create-application"
-      /> */}
-      <section className="application-columns">
-        <DndContext
-          collisionDetection={closestCorners}
-          onDragEnd={handleDragEnd}
-          sensors={sensors}
-        >
+    <article className="application-tracker">
+      <header>
+        <OpenModalButton
+          modalComponent={<CreateApplication />}
+          buttonText="Start a New Application"
+          id="create-application"
+        />
+      </header>
+      <DndContext
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        sensors={sensors}
+      >
+        <section className="application-columns">
           {columns.map((id) => (
-            <ApplicationColumn key={id} id={id} />
+            <div className="column-container">
+              <h2>{id}</h2>
+              <ApplicationColumn key={id} id={id} />
+            </div>
           ))}
-        </DndContext>
-      </section>
-    </>
+        </section>
+        <DragOverlay adjustScale={false} dropAnimation={null}>
+          {activeApplication ? (
+            <ApplicationTile application={activeApplication} />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+    </article>
   );
 };
 
