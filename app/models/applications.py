@@ -15,7 +15,6 @@ class Application(db.Model):
         db.ForeignKey(add_prefix_for_prod("users.id"), ondelete="CASCADE"),
         nullable=False,
     )
-    # application_status = db.Column(db.String(9), nullable=False)
     application_status = db.Column(
         Enum(
             "Upcoming",
