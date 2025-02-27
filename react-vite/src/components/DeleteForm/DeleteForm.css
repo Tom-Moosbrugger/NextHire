@@ -18,7 +18,11 @@
 
 .delete-form h1 {
     font-size: 40px;
-}
+    border: .5px solid white;
+    padding: 10px 20px;
+    box-shadow: -10px 10px goldenrod;
+    margin: 10px;
+  }
 
 .delete-error {
     color: red;
