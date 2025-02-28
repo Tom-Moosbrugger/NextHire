@@ -1,112 +1,109 @@
 .common-question-form {
-    max-height: 80vh;
-    width: 70vw;
-    min-width: 600px;
-    border: .5px solid white;
-    padding: 50px 70px;
-    position: relative;
-    font-size: 20px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+  max-height: 80vh;
+  width: 70vw;
+  min-width: 600px;
+  border: 0.5px solid white;
+  padding: 50px 70px;
+  position: relative;
+  font-size: 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .common-question-form #close-question-form {
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    top: 15px;
-    left: 15px;
-    font-size: 25px;
-    padding: 10px;
-    border: 0.5px solid white;
-    cursor: pointer;
-  }
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 15px;
+  left: 15px;
+  font-size: 25px;
+  padding: 10px;
+  border: 0.5px solid white;
+  cursor: pointer;
+}
 
 .common-question-form::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
 .common-question-form header {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .common-question-form h1 {
-    font-size: 40px;
-    border: .5px solid white;
-    padding: 10px 20px;
-    box-shadow: -10px 10px goldenrod;
-    text-align: center;
-  }
+  font-size: 40px;
+  border: 0.5px solid white;
+  padding: 10px 20px;
+  box-shadow: -10px 10px goldenrod;
+  text-align: center;
+}
 
+.common-question-form input {
+  height: 35px;
+  background-color: #4d4d4d;
+  color: white;
+  padding-left: 10px;
+}
 
-  
-  .common-question-form input {
-    height: 35px;
-    background-color: #4d4d4d;
-    color: white;
-    padding-left: 10px;
-  }
+.cq-form-input div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 
-  .cq-form-input div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+.cq-form-input span {
+  color: rgba(255, 255, 255, 0.604);
+}
 
-  .cq-form-input span {
-    color: rgba(255, 255, 255, 0.604);
-  }
-  
-  .common-question-form input::placeholder {
-    color: rgba(255, 255, 255, 0.604);
-  }
-  
-  .common-question-form input:focus {
-    box-shadow: -5px 5px rgb(239, 187, 18);
-  }
-  
-  .common-question-form textarea {
-    background-color: #4d4d4d;
-    color: white;
-    padding: 10px 20px;
-    width: 100%;
-  }
+.common-question-form input::placeholder {
+  color: rgba(255, 255, 255, 0.604);
+}
 
-  .common-question-form textarea::-webkit-scrollbar {
-    display: none;
-  }
+.common-question-form input:focus {
+  box-shadow: -5px 5px rgb(239, 187, 18);
+}
 
-  .common-question-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.604);
-  }
+.common-question-form textarea {
+  background-color: #4d4d4d;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+}
 
-  .common-question-form textarea:focus {
-    box-shadow: -5px 5px rgb(239, 187, 18);
-  }
+.common-question-form textarea::-webkit-scrollbar {
+  display: none;
+}
 
-  .common-question-form-error {
-    color: red;
-    min-height: 25px;
-  }
+.common-question-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.604);
+}
 
-  .common-question-form button {
-    width: 100%;
-    background-color: black;
-    border: .5px solid white;
-    color: white;
-    font-size: 20px;
-    height: 50px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
+.common-question-form textarea:focus {
+  box-shadow: -5px 5px rgb(239, 187, 18);
+}
 
-  .common-question-form button:hover {
-    box-shadow: -10px 10px rgb(239, 187, 18);
-  }
-  
-  .common-question-form button:active {
-    box-shadow: -10px 10px white;
-  }
+.common-question-form-error {
+  color: red;
+  min-height: 25px;
+}
 
+.common-question-form button {
+  width: 100%;
+  background-color: black;
+  border: 0.5px solid white;
+  color: white;
+  font-size: 20px;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.common-question-form button:hover {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.common-question-form button:active {
+  box-shadow: -10px 10px white;
+}

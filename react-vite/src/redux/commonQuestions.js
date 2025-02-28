@@ -6,6 +6,7 @@ const LOAD_COMMON_QUESTIONS = "commonQuestions/loadCommonQuestions";
 const CREATE_OR_UPDATE_COMMON_QUESTION =
   "commonQuestions/createOrUpdateCommonQuestion";
 const DELETE_COMMON_QUESTION = "commonQuestions/deleteCommonQuestion";
+const RESET_COMMON_QUESTIONS = "commonQuestions/resetCommonQuestions";
 
 // regular actions
 
@@ -133,6 +134,7 @@ const commonQuestionsReducer = (state = {}, action) => {
       const { [action.commonQuestionId]: _, ...newState } = state;
       return newState;
     }
+    case RESET_COMMON_QUESTIONS: return {};
     default:
       return state;
   }

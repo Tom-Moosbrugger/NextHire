@@ -73,7 +73,8 @@
 }
 
 .delete-common-question:hover {
-    border: 1.5px solid white;
+    /* border: 1.5px solid white; */
+    scale: 1.07;
 }
 
 

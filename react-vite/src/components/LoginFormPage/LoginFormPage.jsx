@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { thunkLogin } from "../../redux/session";
-import { useDispatch, useSelector } from "react-redux";
-import { validateEmail } from "../../helperFunctions/helperFunctions";
+import { useDispatch } from "react-redux";
+import { validateEmail } from "../../resources/helperFunctions";
 import * as sessionActions from "../../redux/session";
 import "./LoginFormPage.css";
 

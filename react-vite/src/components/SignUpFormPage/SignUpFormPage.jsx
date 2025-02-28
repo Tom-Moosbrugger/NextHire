@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { thunkSignup } from "../../redux/session";
-import { validateEmail } from "../../helperFunctions/helperFunctions";
+import { validateEmail } from "../../resources/helperFunctions";
 import * as sessionActions from "../../redux/session";
-import './SignUpFormPage.css';
+import "./SignUpFormPage.css";
 
 function SignUpFormPage() {
   const [email, setEmail] = useState("");
@@ -46,8 +46,7 @@ function SignUpFormPage() {
     }
 
     if (password !== confirmPassword)
-      validationErrors.confirmPassword =
-        "Passwords must match";
+      validationErrors.confirmPassword = "Passwords must match";
 
     setErrors(validationErrors);
   }, [email, username, password, confirmPassword]);
@@ -66,9 +65,19 @@ function SignUpFormPage() {
     );
 
     if (serverResponse) {
+      const serverErrors = {};
+
+      serverResponse.email
+        ? (serverErrors.email = serverResponse.email[0])
+        : null;
+      serverResponse.username
+        ? (serverErrors.username = serverResponse.username[0])
+        : null;
+
+      console.log(serverResponse);
       setErrors(serverResponse);
     } else {
-      navigate('/applications');
+      navigate("/applications");
     }
   };
 
