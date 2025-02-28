@@ -4,7 +4,9 @@ import OpenModalButton from "../OpenModalButton";
 import { EditApplication } from "../ApplicationForm";
 import { DeleteApplication } from "../DeleteForm";
 import { TfiClose } from "react-icons/tfi";
+import Loading from "../Loading";
 import "./ApplicationDetails.css";
+
 
 const ApplicationDetails = () => {
   const { applicationId } = useParams();
@@ -18,7 +20,7 @@ const ApplicationDetails = () => {
   ];
   const navigate = useNavigate();
 
-  if (!application) return <h1>Loading...</h1>;
+  if (!application) return <Loading />
   
   const handleClose = () => navigate("/applications")
 

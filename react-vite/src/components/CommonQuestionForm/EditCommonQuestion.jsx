@@ -1,3 +1,4 @@
+import Loading from "../Loading";
 import CommonQuestionForm from "./CommonQuestionForm";
 import { useSelector } from "react-redux";
 
@@ -5,7 +6,7 @@ import { useSelector } from "react-redux";
 const EditCommonQuestion = ({ commonQuestionId }) => {
   const commonQuestion = useSelector(state => state.commonQuestions[commonQuestionId]);
 
-  if (!commonQuestion) return <h1>Loading...</h1>
+  if (!commonQuestion) return <Loading />
 
   return (
     <CommonQuestionForm
