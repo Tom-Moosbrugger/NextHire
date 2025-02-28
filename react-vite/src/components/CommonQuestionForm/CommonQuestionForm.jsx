@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { TfiClose } from "react-icons/tfi";
 import * as commonQuestionActions from "../../redux/commonQuestions";
-
+import CommonQuestionFormTextArea from "./CommonQuestionFormTextArea";
+import CommonQuestionFormError from "./CommonQuestionFormError";
+import { validateCommonQuestionInputs } from "../../resources/helperFunctions";
 import "./CommonQuestionForm.css";
 
 const CommonQuestionForm = ({ commonQuestion, commonQuestionId, formType }) => {
@@ -15,18 +17,7 @@ const CommonQuestionForm = ({ commonQuestion, commonQuestionId, formType }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const validationErrors = {};
-
-    if (!question) {
-      validationErrors.question = "Question is required";
-    } else if (question.length > 500) {
-      validationErrors.question =
-        "Question cannot be longer than 500 characters";
-    }
-
-    if (!response) validationErrors.response = "Response is required";
-
-    setErrors(validationErrors);
+    setErrors(validateCommonQuestionInputs(question, response));
   }, [question, response]);
 
   const header =
@@ -86,42 +77,36 @@ const CommonQuestionForm = ({ commonQuestion, commonQuestionId, formType }) => {
       </header>
       <form>
         <section className="cq-form-input">
-          <div>
-            <label>Question:</label>
-            <span>Characters: {question.length}</span>
-          </div>
-          <textarea
-            placeholder="Enter the question text here..."
+          <CommonQuestionFormTextArea
+            label="Question:"
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Enter the question text here..."
+            handleChange={(e) => setQuestion(e.target.value)}
             rows="4"
           />
-          <div className="common-question-form-error">
-            {hasSubmitted && errors.question && <p>{errors.question}</p>}
-          </div>
+          <CommonQuestionFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.question}
+          />
         </section>
         <section className="cq-form-input">
-          <div>
-            <label>Response:</label>
-            <span>Characters: {response.length}</span>
-          </div>
-          <textarea
-            placeholder="Enter your response here..."
+          <CommonQuestionFormTextArea
+            label="Response:"
             value={response}
-            onChange={(e) => setResponse(e.target.value)}
+            placeholder="Enter the question text here..."
+            handleChange={(e) => setResponse(e.target.value)}
             rows="15"
           />
-          <div className="common-question-form-error">
-            {hasSubmitted && errors.response && <p>{errors.response}</p>}
-          </div>
+          <CommonQuestionFormError
+            hasSubmitted={hasSubmitted}
+            error={errors.response}
+          />
         </section>
         <button onClick={handleSubmit}>{buttonText}</button>
-        <div
-          className="common-question-form-error"
-          style={{ textAlign: "center" }}
-        >
-          {hasSubmitted && errors.serverError && <p>{errors.serverError}</p>}
-        </div>
+        <CommonQuestionFormError
+          hasSubmitted={hasSubmitted}
+          error={errors.serverError}
+        />
       </form>
     </article>
   );

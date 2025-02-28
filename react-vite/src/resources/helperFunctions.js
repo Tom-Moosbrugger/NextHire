@@ -50,3 +50,17 @@ export const validateApplicationInputs = (
 
   return validationErrors;
 };
+
+export const validateCommonQuestionInputs = (question, response) => {
+  const validationErrors = {};
+
+  if (!question) {
+    validationErrors.question = "Question is required";
+  } else if (question.length > 500) {
+    validationErrors.question = "Question cannot be longer than 500 characters";
+  }
+
+  if (!response) validationErrors.response = "Response is required";
+
+  return validationErrors;
+};

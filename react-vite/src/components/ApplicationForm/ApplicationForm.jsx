@@ -212,7 +212,6 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           <ApplicationFormTextArea
             id="job-details"           
             label="Job Details"
-            type="text"
             placeholder="Enter the details from the job post..."
             value={jobDetails}
             handleChange={(e) => setJobDetails(e.target.value)}
@@ -220,7 +219,6 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           <ApplicationFormTextArea
             id="submission-details"
             label="Submission Details"
-            type="text"
             placeholder="Enter details about where and how to submit your application..."
             value={submissionDetails}
             handleChange={(e) => setSubmissionDetails(e.target.value)}
