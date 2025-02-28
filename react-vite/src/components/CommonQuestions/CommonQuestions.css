@@ -29,14 +29,14 @@
 
 .common-question-tiles {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* column-gap: 10px; */
+    grid-template-columns: repeat(4, 1fr);
     row-gap: 20px;
     padding: 30px;
 }
 
 .common-question-tile {
     background-color: black;
+    box-shadow: -5px 5px goldenrod;
     color: white;
     border: .5px solid white;
     width: 200px;
@@ -48,7 +48,7 @@
 }
 
 .common-question-tile:hover {
-  box-shadow: -5px 5px goldenrod;
+  box-shadow: -5px 5px white;
 }
 
 .common-question-tile p {
@@ -69,9 +69,12 @@
     bottom: 10px;
     right: 10px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 1;
 }
 
+.delete-common-question:hover {
+    border: 1.5px solid white;
+}
 
 
 

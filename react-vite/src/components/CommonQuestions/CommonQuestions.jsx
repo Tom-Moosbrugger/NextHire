@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
-import { CreateCommonQuestion } from "../CommonQuestionForm";
+import {
+  CreateCommonQuestion,
+  EditCommonQuestion,
+} from "../CommonQuestionForm";
+import { DeleteCommonQuestion } from "../DeleteForm";
 import OpenModalButton from "../OpenModalButton";
 import Loading from "../Loading";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -13,6 +17,8 @@ const CommonQuestions = () => {
 
   if (!commonQuestions) return <Loading />;
 
+  const editQuestion = () => {};
+
   return (
     <article className="common-questions">
       <header>
@@ -25,12 +31,25 @@ const CommonQuestions = () => {
       <section className="common-question-tiles">
         {commonQuestions.map((commonQuestion) => (
           <div key={commonQuestion.id} className="common-question-tile">
-            <p>
+            <p
+              onClick={() =>
+                setModalContent(
+                  <EditCommonQuestion commonQuestionId={commonQuestion.id} />
+                )
+              }
+            >
               {commonQuestion.question.length > 90
                 ? `${commonQuestion.question.slice(0, 89)}...?`
                 : commonQuestion.question}
             </p>
-            <FaRegTrashAlt className="delete-common-question" />
+            <FaRegTrashAlt
+              onClick={() =>
+                setModalContent(
+                  <DeleteCommonQuestion commonQuestionId={commonQuestion.id}/>
+                )
+              }
+              className="delete-common-question"
+            />
           </div>
         ))}
       </section>

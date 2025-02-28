@@ -4,6 +4,7 @@ import { useModal } from "../../context/Modal";
 import { useNavigate } from "react-router-dom";
 import { TfiClose } from "react-icons/tfi";
 import * as applicationActions from "../../redux/applications";
+import * as commonQuestionActions from "../../redux/commonQuestions";
 import "./DeleteForm.css";
 
 const DeleteForm = ({ formType, resourceId }) => {
@@ -35,6 +36,18 @@ const DeleteForm = ({ formType, resourceId }) => {
       closeModal();
 
       return navigate("/applications");
+    } else if (formType === "Common Question") {
+      await dispatch(
+        commonQuestionActions.thunkDeleteCommonQuestion(resourceId)
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data?.errors)
+          return setErrors({
+            serverError: "There was a server issue, please try again.",
+          });
+      });
+
+      closeModal();
     }
   };
 
