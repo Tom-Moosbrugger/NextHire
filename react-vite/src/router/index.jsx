@@ -6,6 +6,7 @@ import LoginFormPage from "../components/LoginFormPage";
 import ApplicationTracker from "../components/ApplicationTracker";
 import ApplicationDetails from "../components/ApplicationDetails";
 import ProtectedRoute from "./ProtectedRoute";
+import CommonQuestions from "../components/CommonQuestions";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/common-questions",
-            element: <h1>Common Questions</h1>,
+            element: <CommonQuestions />,
           },
           {
             path: "/resumes",

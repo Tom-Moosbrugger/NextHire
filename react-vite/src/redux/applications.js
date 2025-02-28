@@ -159,12 +159,12 @@ export const rejected = createSelector(
     })
 );
 
-// get all applications with status of "Rejected"
+// get all applications with status of "Offered"
 export const offered = createSelector(
   [getApplicationState],
   (applicationState) =>
     Object.values(applicationState).filter((application) => {
-      return application.applicationStatus === "Rejected";
+      return application.applicationStatus === "Offered";
     })
 );
 

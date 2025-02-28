@@ -32,5 +32,5 @@ def seed():
 def undo():
     undo_users()
     undo_applications()
-    undo_common_questions
+    undo_common_questions()
     # Add other undo functions here

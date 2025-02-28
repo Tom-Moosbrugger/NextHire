@@ -4,7 +4,7 @@
   border: 0.5px solid white;
   padding: 40px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   font-size: 20px;
 }
 
