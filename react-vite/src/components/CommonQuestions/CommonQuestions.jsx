@@ -17,8 +17,6 @@ const CommonQuestions = () => {
 
   if (!commonQuestions) return <Loading />;
 
-  const editQuestion = () => {};
-
   return (
     <article className="common-questions">
       <header>
