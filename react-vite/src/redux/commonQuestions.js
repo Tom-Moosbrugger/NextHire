@@ -11,21 +11,21 @@ const DELETE_COMMON_QUESTION = "commonQuestions/deleteCommonQuestion";
 
 const loadCommonQuestions = (commonQuestions) => {
   return {
-    type: LOAD_APPLICATIONS,
+    type: LOAD_COMMON_QUESTIONS,
     commonQuestions,
   };
 };
 
 const createOrUpdateCommonQuestion = (commonQuestion) => {
   return {
-    type: CREATE_OR_UPDATE_APPLICATION,
+    type: CREATE_OR_UPDATE_COMMON_QUESTION,
     commonQuestion,
   };
 };
 
 const deleteCommonQuestion = (commonQuestionId) => {
   return {
-    type: DELETE_APPLICATION,
+    type: DELETE_COMMON_QUESTION,
     commonQuestionId,
   };
 };

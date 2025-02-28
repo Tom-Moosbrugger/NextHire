@@ -21,23 +21,23 @@
   row-gap: 20px;
 }
 
-#Upcoming:hover {
+#Upcoming {
   box-shadow: -5px 5px white;
 }
 
-#Submitted:hover {
+#Submitted {
   box-shadow: -5px 5px #3197da;
 }
 
-#Interviewing:hover {
+#Interviewing {
   box-shadow: -5px 5px yellow;
 }
 
-#Rejected:hover {
+#Rejected {
   box-shadow: -5px 5px rgba(255, 0, 0, 1);
 }
 
-#Offered:hover {
+#Offered {
   box-shadow: -5px 5px rgb(18, 186, 18);
 }
 

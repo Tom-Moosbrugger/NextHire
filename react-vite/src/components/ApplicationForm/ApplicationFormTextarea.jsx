@@ -1,6 +1,5 @@
 const ApplicationFormTextarea = ({
     label,
-    type,
     placeholder,
     value,
     handleChange,

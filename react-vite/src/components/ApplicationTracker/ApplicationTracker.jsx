@@ -54,6 +54,8 @@ const ApplicationTracker = () => {
 
     if (!over) return;
 
+    console.log("OVER", over.id)
+
     const applicationId = active.id;
 
     const newStatus = over.id;
@@ -85,7 +87,7 @@ const ApplicationTracker = () => {
       >
         <section className="application-columns">
           {columns.map((id) => (
-            <div className="column-container">
+            <div key={id} className="column-container">
               <h2>{id}</h2>
               <ApplicationColumn key={id} id={id} />
             </div>

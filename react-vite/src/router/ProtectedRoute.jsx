@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as sessionActions from "../redux/session";
 import * as applicationActions from "../redux/applications";
+import * as commonQuestionActions from "../redux/commonQuestions";
 
 export default function ProtectedRoute() {
   const dispatch = useDispatch();
@@ -15,6 +16,9 @@ export default function ProtectedRoute() {
     dispatch(sessionActions.thunkAuthenticate())
       .then(() => {
         dispatch(applicationActions.thunkLoadApplications());
+      })
+      .then(() => {
+        dispatch(commonQuestionActions.thunkLoadCommonQuestions());
       })
       .finally(() => setIsLoaded(true));
   }, [dispatch]);
