@@ -65,17 +65,8 @@ function SignUpFormPage() {
     );
 
     if (serverResponse) {
-      const serverErrors = {};
-
-      serverResponse.email
-        ? (serverErrors.email = serverResponse.email[0])
-        : null;
-      serverResponse.username
-        ? (serverErrors.username = serverResponse.username[0])
-        : null;
-
-      console.log(serverResponse);
-      setErrors(serverResponse);
+      setErrors(serverResponse)
+      return setHasSubmitted(true)
     } else {
       navigate("/applications");
     }
