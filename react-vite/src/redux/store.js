@@ -7,10 +7,12 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import applicationsReducer from "./applications";
+import commonQuestionsReducer from "./commonQuestions";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   applications: applicationsReducer,
+  commonQuestions: commonQuestionsReducer
 });
 
 let enhancer;

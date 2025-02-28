@@ -123,6 +123,7 @@ export const thunkDeleteApplication =
 
 const getApplicationState = (state) => state.applications;
 
+// get all applications with status of "Upcoming"
 export const upcoming = createSelector(
   [getApplicationState],
   (applicationState) =>
@@ -131,6 +132,7 @@ export const upcoming = createSelector(
     })
 );
 
+// get all applications with status of "Submitted"
 export const submitted = createSelector(
   [getApplicationState],
   (applicationState) =>
@@ -139,6 +141,7 @@ export const submitted = createSelector(
     })
 );
 
+// get all applications with status of "Interviewing"
 export const interviewing = createSelector(
   [getApplicationState],
   (applicationState) =>
@@ -147,6 +150,7 @@ export const interviewing = createSelector(
     })
 );
 
+// get all applications with status of "Rejected"
 export const rejected = createSelector(
   [getApplicationState],
   (applicationState) =>
@@ -155,11 +159,12 @@ export const rejected = createSelector(
     })
 );
 
+// get all applications with status of "Rejected"
 export const offered = createSelector(
   [getApplicationState],
   (applicationState) =>
     Object.values(applicationState).filter((application) => {
-      return application.applicationStatus === "Offered";
+      return application.applicationStatus === "Rejected";
     })
 );
 
