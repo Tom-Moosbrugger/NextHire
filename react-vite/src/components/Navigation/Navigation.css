@@ -1,3 +1,69 @@
-.profile-dropdown {
-  position: absolute;
+.nav-bar {
+  border-bottom: 1px solid #4d4d4d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+}
+
+.middle-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 50px;
+}
+
+.nav-bar svg {
+  border-radius: 20px;
+  padding: 5px;
+  font-size: 40px;
+  color: black;
+  background-color: white;
+}
+
+.middle-nav-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+}
+
+.middle-nav-bar a:hover {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar .active {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar a:focus {
+  box-shadow: -10px 10px rgb(239, 187, 18);
+}
+
+.middle-nav-bar a:active {
+  box-shadow: -10px 10px white;
+}
+
+.nav-bar #log-out {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.nav-bar #log-out:hover {
+  box-shadow: -5px 5px rgb(239, 187, 18);
+  width: 100px;
+}
+
+.nav-bar #log-out:active {
+  box-shadow: -5px 5px white;
 }

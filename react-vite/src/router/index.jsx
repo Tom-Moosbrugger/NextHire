@@ -1,24 +1,54 @@
-import { createBrowserRouter } from 'react-router-dom';
-import LoginFormPage from '../components/LoginFormPage';
-import SignupFormPage from '../components/SignupFormPage';
-import Layout from './Layout';
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./Layout";
+import LandingPage from "../components/LandingPage";
+import SignUpFormPage from "../components/SignUpFormPage";
+import LoginFormPage from "../components/LoginFormPage";
+import ApplicationTracker from "../components/ApplicationTracker";
+import ApplicationDetails from "../components/ApplicationDetails";
+import ProtectedRoute from "./ProtectedRoute";
+import CommonQuestions from "../components/CommonQuestions";
 
 export const router = createBrowserRouter([
   {
-    element: <Layout />,
+    element: <LandingPage />,
+    path: "/",
+  },
+  {
+    element: <SignUpFormPage />,
+    path: "/sign-up",
+  },
+  {
+    element: <LoginFormPage />,
+    path: "/log-in",
+  },
+  {
+    element: <ProtectedRoute />,
     children: [
       {
-        path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <Layout />,
+        children: [
+          {
+            path: "/applications/:applicationId",
+            element: <ApplicationDetails />,
+          },
+          {
+            path: "/applications",
+            element: <ApplicationTracker />,
+          },
+          {
+            path: "/common-questions",
+            element: <CommonQuestions />,
+          },
+          {
+            path: "/resumes",
+            element: <h1>Resumes</h1>,
+          },
+          {
+            path: "/cover-letters",
+            element: <h1>Cover Letters</h1>,
+          },
+        ],
       },
-      {
-        path: "login",
-        element: <LoginFormPage />,
-      },
-      {
-        path: "signup",
-        element: <SignupFormPage />,
-      },
-    ],
-  },
+    ]
+  }
 ]);

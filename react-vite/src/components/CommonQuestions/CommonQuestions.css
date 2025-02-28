@@ -1,0 +1,80 @@
+.common-questions {
+    min-width: 950px;
+}
+
+.common-questions header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0 20px;
+}
+
+#create-common-question {
+  background-color: black;
+  border: 0.5px solid white;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 500px;
+  cursor: pointer;
+}
+
+#create-common-question:hover {
+  box-shadow: -10px 10px goldenrod;
+}
+
+#create-common-question:active {
+  box-shadow: -10px 10px white;
+}
+
+.common-question-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    padding: 30px;
+}
+
+.common-question-tile {
+    background-color: black;
+    box-shadow: -5px 5px goldenrod;
+    color: white;
+    border: .5px solid white;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.common-question-tile:hover {
+  box-shadow: -5px 5px white;
+}
+
+.common-question-tile p {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.delete-common-question {
+    border: .5px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.delete-common-question:hover {
+    border: 1.5px solid white;
+}
+
+
+

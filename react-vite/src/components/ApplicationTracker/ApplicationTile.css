@@ -1,0 +1,13 @@
+.application-tile {
+    background-color: black;
+    min-width: 140px;
+    text-align: center;
+    border: .5px solid white;
+    padding: 10px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.application-tile:hover {
+    list-style: none;
+}

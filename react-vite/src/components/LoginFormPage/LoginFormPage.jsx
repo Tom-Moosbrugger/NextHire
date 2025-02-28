@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import "./LoginForm.css";
+import { validateEmail } from "../../helperFunctions/helperFunctions";
+import * as sessionActions from "../../redux/session";
+import "./LoginFormPage.css";
 
 function LoginFormPage() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  const user = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    dispatch(sessionActions.thunkAuthenticate());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const validationErrors = {};
+
+    if (!email) {
+      validationErrors.email = "Email address is required";
+    } else if (!validateEmail(email)) {
+      validationErrors.email = "Please enter a valid email address";
+    }
+
+    if (!password) validationErrors.password = "Password is required";
+
+    setErrors(validationErrors);
+  }, [email, password]);
+
+  if (user) return navigate("/applications");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (Object.values(errors).length) return setHasSubmitted(true);
 
     const serverResponse = await dispatch(
       thunkLogin({
@@ -27,39 +51,48 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      return navigate("/applications");
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      {errors.length > 0 &&
-        errors.map((message) => <p key={message}>{message}</p>)}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <article className="log-in-form">
+      <div className="log-in-container">
+        <h1>
+          Log in to <em>Next</em>Hire
+        </h1>
+        <div className="log-in-form-error">
+          {hasSubmitted && errors.server && <p>{errors.server}</p>}
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address..."
+            />
+          </label>
+          <div className="log-in-form-error">
+            {hasSubmitted && errors.email && <p>{errors.email}</p>}
+          </div>
+          <label>
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password..."
+            />
+          </label>
+          <div className="log-in-form-error">
+            {hasSubmitted && errors.password && <p>{errors.password}</p>}
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </article>
   );
 }
 

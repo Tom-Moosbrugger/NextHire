@@ -1,1 +1,75 @@
-/* TODO: Add sitewide styles */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font: inherit;
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+button
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="text"],
+input[type=radio],
+input[type="date"],
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+textarea,
+input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+button {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+em {
+  font-weight: 1000;
+}
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  border: solid 1px white;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+}

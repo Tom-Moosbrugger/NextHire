@@ -1,0 +1,62 @@
+.column {
+  border: 0.5px solid white;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  max-height: 600px;
+  min-width: 180px;
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
+}
+
+.column ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+#Upcoming {
+  box-shadow: -5px 5px white;
+}
+
+#Submitted {
+  box-shadow: -5px 5px #3197da;
+}
+
+#Interviewing {
+  box-shadow: -5px 5px yellow;
+}
+
+#Rejected {
+  box-shadow: -5px 5px rgba(255, 0, 0, 1);
+}
+
+#Offered {
+  box-shadow: -5px 5px rgb(18, 186, 18);
+}
+
+#Upcoming li:hover {
+  box-shadow: -5px 5px white;
+}
+
+#Submitted li:hover {
+  box-shadow: -5px 5px #3197da;
+}
+
+#Interviewing li:hover {
+  box-shadow: -5px 5px yellow;
+}
+
+#Rejected li:hover {
+  box-shadow: -5px 5px rgba(255, 0, 0, 1);
+}
+
+#Offered li:hover {
+  box-shadow: -5px 5px rgb(18, 186, 18);
+}
