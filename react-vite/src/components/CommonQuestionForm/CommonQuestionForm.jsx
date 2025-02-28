@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { TfiClose } from "react-icons/tfi";
 import * as commonQuestionActions from "../../redux/commonQuestions";
@@ -14,7 +13,6 @@ const CommonQuestionForm = ({ commonQuestion, commonQuestionId, formType }) => {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const validationErrors = {};
