@@ -14,8 +14,6 @@ function LoginFormPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.session.user);
-
   useEffect(() => {
     dispatch(sessionActions.thunkAuthenticate());
   }, [dispatch]);
@@ -34,7 +32,7 @@ function LoginFormPage() {
     setErrors(validationErrors);
   }, [email, password]);
 
-  if (user) return navigate("/applications");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +49,7 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      return navigate("/applications");
+      navigate("/applications");
     }
   };
 

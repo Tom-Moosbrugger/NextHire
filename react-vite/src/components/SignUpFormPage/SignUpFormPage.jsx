@@ -15,7 +15,6 @@ function SignUpFormPage() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(sessionActions.thunkAuthenticate());
@@ -53,8 +52,6 @@ function SignUpFormPage() {
     setErrors(validationErrors);
   }, [email, username, password, confirmPassword]);
 
-  if (user) return navigate('/applications'); 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,7 +68,7 @@ function SignUpFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      return navigate('/applications');
+      navigate('/applications');
     }
   };
 

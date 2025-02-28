@@ -8,15 +8,10 @@ const LandingPage = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(sessionActions.thunkAuthenticate());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (user) return navigate("/applications");
-  }, [user, navigate])
 
   const loginDemo = async () => {
     const serverResponse = await dispatch(
