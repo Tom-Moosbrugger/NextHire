@@ -9,6 +9,8 @@ const EditApplication = () => {
 
   if (!application) return <Loading />
 
+  console.log(application)
+
   return (
     <ApplicationForm
       application={application}

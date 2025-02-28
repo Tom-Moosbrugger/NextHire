@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { thunkSignup } from "../../redux/session";
-import { validateEmail } from "../../helperFunctions/helperFunctions";
+import { validateEmail } from "../../resources/helperFunctions";
 import * as sessionActions from "../../redux/session";
-import './SignUpFormPage.css';
+import "./SignUpFormPage.css";
 
 function SignUpFormPage() {
   const [email, setEmail] = useState("");
@@ -15,7 +15,6 @@ function SignUpFormPage() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(sessionActions.thunkAuthenticate());
@@ -47,13 +46,10 @@ function SignUpFormPage() {
     }
 
     if (password !== confirmPassword)
-      validationErrors.confirmPassword =
-        "Passwords must match";
+      validationErrors.confirmPassword = "Passwords must match";
 
     setErrors(validationErrors);
   }, [email, username, password, confirmPassword]);
-
-  if (user) return navigate('/applications'); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,9 +65,10 @@ function SignUpFormPage() {
     );
 
     if (serverResponse) {
-      setErrors(serverResponse);
+      setErrors(serverResponse)
+      return setHasSubmitted(true)
     } else {
-      return navigate('/applications');
+      navigate("/applications");
     }
   };
 

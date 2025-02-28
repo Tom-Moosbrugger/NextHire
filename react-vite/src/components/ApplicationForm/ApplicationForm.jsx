@@ -17,11 +17,11 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
   );
   const [companyName, setCompanyName] = useState(application.companyName);
   const [companyWebsite, setCompanyWebsite] = useState(
-    application.companyWebsite
+    application.companyWebsite || ""
   );
   const [jobTitle, setJobTitle] = useState(application.jobTitle);
   const [jobDetails, setJobDetails] = useState(application.jobDetails);
-  const [jobPostUrl, setJobPostUrl] = useState(application.jobPostUrl);
+  const [jobPostUrl, setJobPostUrl] = useState(application.jobPostUrl || "");
   const [submissionDetails, setSubmissionDetails] = useState(
     application.submissionDetails
   );
@@ -134,9 +134,9 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
 
   return (
     <article className="application-form">
+      <TfiClose onClick={() => closeModal()} id="close-application-form" />
       <header className="application-form-main-header">
         {header}
-        <TfiClose onClick={() => closeModal()} id="close-application-form"/>
       </header>
       <form>
         <section>
@@ -210,7 +210,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             error={errors.jobPostUrl}
           />
           <ApplicationFormTextArea
-            id="job-details"           
+            id="job-details"
             label="Job Details"
             placeholder="Enter the details from the job post..."
             value={jobDetails}

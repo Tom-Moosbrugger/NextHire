@@ -19,7 +19,11 @@ function Navigation() {
     if (serverResponse) {
       alert(serverResponse.server);
     } else {
-      return navigate("/");
+      dispatch({ type: "applications/resetApplications" })
+
+      dispatch({ type: "commonQuestions/resetCommonQuestions"})
+
+      navigate("/");
     }
   };
 

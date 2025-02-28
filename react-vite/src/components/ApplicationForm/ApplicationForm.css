@@ -1,11 +1,12 @@
 .application-form {
-  width: 80vw;
+  width: 900px;
   max-height: 80vh;
   border: 0.5px solid white;
-  padding: 40px;
+  padding: 50px 50px;
   overflow-x: hidden;
   overflow-y: scroll;
   font-size: 20px;
+  position: relative;
 }
 
 .application-form::-webkit-scrollbar {
@@ -17,14 +18,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative
 }
 
 .application-form #close-application-form {
   position: absolute;
-  height: 35px;
-  width: 35px;
-  top: 5px;
+  height: 30px;
+  width: 30px;
+  top: 15px;
   left: 15px;
   font-size: 25px;
   padding: 10px;
@@ -33,12 +33,13 @@
 }
 
 .application-form h1 {
-  font-size: 50px;
-  text-align: left;
+  font-size: 40px;
   border: .5px solid white;
   padding: 10px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   box-shadow: -10px 10px goldenrod;
+  text-align: center;
+  width: 95%
 }
 
 .application-form-header {
@@ -140,7 +141,7 @@
 
 .application-form-input input[type="date"] {
   cursor: text;
-  width: 20%;
+  width: 23%;
 }
 
 .application-form-input input[type="date"]:focus {

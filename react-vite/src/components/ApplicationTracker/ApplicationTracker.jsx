@@ -54,8 +54,6 @@ const ApplicationTracker = () => {
 
     if (!over) return;
 
-    console.log("OVER", over.id)
-
     const applicationId = active.id;
 
     const newStatus = over.id;

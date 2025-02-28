@@ -5,6 +5,7 @@ import { createSelector } from "reselect";
 const LOAD_APPLICATIONS = "applications/loadApplications";
 const CREATE_OR_UPDATE_APPLICATION = "applications/createOrUpdateApplication";
 const DELETE_APPLICATION = "applications/deleteApplication";
+const RESET_APPLICATIONS = "applications/resetApplications";
 
 // regular actions
 
@@ -180,6 +181,7 @@ const applicationsReducer = (state = {}, action) => {
       const { [action.applicationId]: _, ...newState } = state;
       return newState;
     }
+    case RESET_APPLICATIONS: return {};
     default:
       return state;
   }
