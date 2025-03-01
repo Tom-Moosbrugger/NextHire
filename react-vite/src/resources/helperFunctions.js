@@ -61,6 +61,8 @@ export const validateCommonQuestionInputs = (question, response) => {
 
   if (!question) {
     validationErrors.question = "Question is required";
+  } else if (question.length > 0 && question.length < 10) {
+    validationErrors.question = "Question cannot be less than 10 characters";
   } else if (question.length > 500) {
     validationErrors.question = "Question cannot be longer than 500 characters";
   }
