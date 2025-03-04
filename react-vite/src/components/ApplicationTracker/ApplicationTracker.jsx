@@ -58,10 +58,13 @@ const ApplicationTracker = () => {
 
     const newStatus = over.id;
 
+    const originalApplication = event.active.data.current
+
     await dispatch(
       applicationActions.thunkUpdateApplicationStatus(
         { application_status: newStatus },
-        applicationId
+        applicationId,
+        originalApplication
       )
     );
 
@@ -82,6 +85,7 @@ const ApplicationTracker = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         sensors={sensors}
+        autoScroll={{ threshold: { x: 0, y: 0.2 } }}
       >
         <section className="application-columns">
           {columns.map((id) => (

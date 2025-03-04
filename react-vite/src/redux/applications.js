@@ -85,8 +85,17 @@ export const thunkUpdateApplication =
   };
 
 export const thunkUpdateApplicationStatus =
-  (newStatus, updatedApplicationId) => async (dispatch) => {
-    console.log(newStatus);
+  (newStatus, updatedApplicationId, originalApplication) => async (dispatch) => {
+    // create the new application in advance for optimistic loading
+    const optimisticApplication = {
+      [updatedApplicationId]: {
+        ...originalApplication,
+      applicationStatus: newStatus.application_status
+      }
+    };
+
+    // dispatch the updated application immediately
+    dispatch(createOrUpdateApplication(optimisticApplication));
 
     const response = await fetch(`/api/applications/${updatedApplicationId}`, {
       method: "PATCH",
@@ -96,10 +105,9 @@ export const thunkUpdateApplicationStatus =
       body: JSON.stringify(newStatus),
     });
 
-    if (response.ok) {
-      const updatedApplication = await response.json();
-      return dispatch(createOrUpdateApplication(updatedApplication));
-    } else {
+    if (!response.ok) {
+      // reverse the change if there is a server error
+      dispatch(createOrUpdateApplication({[updatedApplicationId]: originalApplication}))
       return { server: "Something went wrong. Please try again" };
     }
   };
