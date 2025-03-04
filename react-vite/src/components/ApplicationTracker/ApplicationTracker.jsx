@@ -24,13 +24,13 @@ const ApplicationTracker = () => {
   const sensors = useSensors(
     useSensor(MouseSensor, {
         activationConstraint: {
-            delay: 150,
+            delay: 125,
             tolerance: 10
         }
     }),
     useSensor(TouchSensor, {
         activationConstraint: {
-            delay: 150,
+            delay: 125,
             tolerance: 10
         }
     }),
