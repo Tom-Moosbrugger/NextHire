@@ -16,12 +16,8 @@
 }
 
 .log-in-form h1 {
-    border-bottom: 1px solid #4d4d4d;
-    border-left: 1px solid #4d4d4d;
     font-size: 50px;
-    margin-bottom: 20px;
-    padding-left: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .log-in-form label {

@@ -32,9 +32,6 @@ const LandingPage = () => {
           <h1>
             Welcome to <em>Next</em>Hire
           </h1>
-          <p>
-            Your search for what&apos;s <em>next</em> starts here
-          </p>
         </header>
         <section>
           <button onClick={() => navigate("/sign-up")}>Sign Up</button>
