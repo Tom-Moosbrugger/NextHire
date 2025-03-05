@@ -24,7 +24,7 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="text"],
-input[type=radio],
+input[type="radio"],
 input[type="date"],
 textarea {
   -moz-appearance: none;
