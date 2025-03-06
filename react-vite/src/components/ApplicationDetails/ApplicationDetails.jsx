@@ -7,7 +7,6 @@ import { TfiClose } from "react-icons/tfi";
 import Loading from "../Loading";
 import "./ApplicationDetails.css";
 
-
 const ApplicationDetails = () => {
   const { applicationId } = useParams();
   const application = useSelector((state) => state.applications[applicationId]);
@@ -20,16 +19,15 @@ const ApplicationDetails = () => {
   ];
   const navigate = useNavigate();
 
-  if (!application) return <Loading />
-  
-  const handleClose = () => navigate("/applications")
+  if (!application) return <Loading />;
+
+  const handleClose = () => navigate("/applications");
 
   return (
     <article className="application-details">
+      <TfiClose onClick={handleClose} id="close-application" />
       <header>
-        <h1>
-          <em>Application Details</em>
-        </h1>
+        <h1>Application Details</h1>
         <OpenModalButton
           modalComponent={<EditApplication />}
           buttonText="Update"
@@ -40,12 +38,9 @@ const ApplicationDetails = () => {
           buttonText="Delete"
           id="delete-application"
         />
-        <TfiClose onClick={handleClose} id="close-application"/>
       </header>
       <section className="application-status">
-        <h2>
-          <em>Application Status</em>
-        </h2>
+        <h2>Application Status</h2>
         <div className="statuses-container">
           {applicationStatuses.map((status) => (
             <div key={status} className="status-container">
@@ -62,71 +57,53 @@ const ApplicationDetails = () => {
           ))}
         </div>
       </section>
-      <section className="company-and-job">
-        <div className="company-info">
-          <h2>
-            <em>Company Information</em>
-          </h2>
+      <section className="company-info">
+        <h2>Company Information</h2>
+        <p>
+          <em>Company Name:</em> {application.companyName}
+        </p>
+        <div className="application-link">
           <p>
-            <em>Company Name:</em> {application.companyName}
+            <em>Company Website:</em>
           </p>
-          <div>
-            <p>
-              <em>Company Website:</em>
-            </p>
-            {application.companyWebsite && (
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href={application.companyWebsite}
-              >
-                Visit Website
-              </a>
-            )}
-          </div>
+          {application.companyWebsite && (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={application.companyWebsite}
+            >
+              Visit Website
+            </a>
+          )}
         </div>
-        <div className="job-info">
-          <h2>
-            <em>Job Information</em>
-          </h2>
+      </section>
+      <section className="job-info">
+        <h2>Job Information</h2>
+        <p>
+          <em>Job Title:</em> {application.jobTitle}
+        </p>
+        <div className="application-link">
           <p>
-            <em>Job Title:</em> {application.jobTitle}
+            <em>Job Post:</em>
           </p>
-          <div>
-            <p>
-              <em>Job Post:</em>
-            </p>
-            {application.companyWebsite && (
-              <a target="_blank" rel="noreferrer" href={application.jobPostUrl}>
-                Visit Website
-              </a>
-            )}
-          </div>
+          {application.companyWebsite && (
+            <a target="_blank" rel="noreferrer" href={application.jobPostUrl}>
+              Visit Website
+            </a>
+          )}
         </div>
       </section>
       <section className="job-details">
-        <h2>
-          <em>Job Details</em>
-        </h2>
+        <h2>Job Details</h2>
         <p>{application.jobDetails}</p>
       </section>
       <section className="submission-details">
-        <h2>
-          <em>Submission Details</em>
-        </h2>
+        <h2>Submission Details</h2>
         <p>{application.submissionDetails}</p>
       </section>
-      <section className="application-date">
-        <h2>
-          <em>Application Deadline</em>
-        </h2>
-        <p>{application.applicationDeadline}</p>
-      </section>
       <section className="application-materials">
-        <h2>
-          <em>Application Materials</em>
-        </h2>
-        <div>
+        <h2>Application Materials</h2>
+        <div className="application-link">
           <p>
             <em>Resume: </em>
           </p>
@@ -136,22 +113,35 @@ const ApplicationDetails = () => {
             </a>
           )}
         </div>
-        <div>
+        <div className="application-link">
           <p>
             <em>Cover Letter: </em>
           </p>
           {application.coverLetterUrl && (
-            <a target="_blank" rel="noreferrer" href={application.coverLetterUrl}>
-              View Resume
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={application.coverLetterUrl}
+            >
+              View Cover Letter
             </a>
           )}
         </div>
       </section>
-      <section className="application-date">
-        <h2>
-          <em>Date Submitted</em>
-        </h2>
-        <p>{application.dateSubmitted}</p>
+      <section className="application-dates">
+        <h2>Application Dates</h2>
+        <div>
+          <p>
+            <em>Application Deadline:</em>
+          </p>
+          <p>{application.applicationDeadline}</p>
+        </div>
+        <div>
+          <p>
+            <em>Date Submitted:</em>
+          </p>
+          <p>{application.dateSubmitted}</p>
+        </div>
       </section>
     </article>
   );

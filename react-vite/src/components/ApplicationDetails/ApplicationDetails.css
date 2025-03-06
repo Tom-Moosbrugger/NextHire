@@ -1,8 +1,37 @@
 .application-details {
+  margin: 50px;
+  border: 0.5px solid white;
+  position: relative;
+  min-width: 950px;
+  padding-bottom: 30px;
+}
+
+.application-details header {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  padding: 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  margin-top: 10px;
+}
+
+.application-details h1 {
+  font-size: 30px;
+  text-align: center;
+  border: 0.5px solid white;
+  padding: 10px 0px;
+  width: 500px;
+  box-shadow: -5px 5px goldenrod;
+}
+
+.application-details button {
+  background-color: black;
+  color: white;
+  border: 0.5px solid white;
+  height: 40px;
+  width: 150px;
+  cursor: pointer;
 }
 
 .application-details a {
@@ -14,43 +43,6 @@
 
 .application-details a:visited {
   color: rgb(224, 25, 243);
-}
-
-.application-details p {
-  font-size: 20px;
-}
-
-.application-details h2 {
-  font-size: 30px;
-  text-align: center;
-}
-
-.application-details header {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  min-width: 950px;
-  margin-bottom: 10px;
-}
-
-.application-details header h1 {
-  font-size: 40px;
-  text-align: center;
-  border: 0.5px solid white;
-  padding: 30px 0px;
-  width: 500px;
-  box-shadow: -10px 10px goldenrod;
-}
-
-.application-details header button {
-  background-color: black;
-  color: white;
-  border: 0.5px solid white;
-  height: 40px;
-  width: 150px;
-  cursor: pointer;
 }
 
 .application-details header button:hover {
@@ -75,24 +67,30 @@
 
 .application-details #close-application {
   position: absolute;
-  height: 35px;
-  width: 35px;
-  top: 5px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
   font-size: 25px;
-  padding: 10px;
-  border: 0.5px solid white;
   cursor: pointer;
+  z-index: 1;
 }
 
-.application-status {
-  border: 0.5px solid white;
-  padding: 20px 20px;
-  min-width: 950px;
+.application-details h2 {
+  font-size: 30px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid white;
 }
 
-.application-status h2 {
-  padding-bottom: 20px;
+.application-details p {
+  font-size: 20px;
+}
+
+.application-details em {
+  font-weight: 800;
+}
+
+.application-details section {
+  padding: 20px 40px;
 }
 
 .statuses-container {
@@ -135,68 +133,19 @@
   background-color: rgb(18, 186, 18);
 }
 
-.company-and-job {
+.application-link {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 950px;
+  column-gap: 10px;
 }
 
-.company-info,
-.job-info {
-  min-width: 450px;
-  height: 180px;
-  border: 0.5px solid white;
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 10px;
-  padding: 10px 20px;
-}
-
-.company-info div {
+.application-dates div {
   display: flex;
   flex-direction: row;
   column-gap: 10px;
 }
 
-.job-info div {
-  display: flex;
-  flex-direction: row;
-  column-gap: 10px;
-}
-
-.job-details,
-.submission-details {
-  display: flex;
-  flex-direction: column;
-  min-width: 950px;
-  border: 0.5px solid white;
-  padding: 20px;
-  row-gap: 10px;
-}
-
-.application-date {
-  min-width: 950px;
-  border: 0.5px solid white;
-  padding: 20px;
-}
-
-.application-date p {
-  font-size: 24px;
-  text-align: center;
-}
-
-.application-materials {
-  min-width: 950px;
-  border: 0.5px solid white;
-  padding: 20px;
-}
-
-.application-materials div {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    padding-bottom: 10px
+.application-dates h3 {
+    font-size: 24px;
 }
