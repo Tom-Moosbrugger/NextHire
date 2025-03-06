@@ -23,7 +23,9 @@ const ApplicationTile = ({ application }) => {
       {...attributes}
       style={style}
     >
-      {application.companyName}
+      {application.companyName.length > 12
+        ? `${application.companyName.slice(0, 11)}...`
+        : application.companyName}
     </li>
   );
 };
