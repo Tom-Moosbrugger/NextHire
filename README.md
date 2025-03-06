@@ -22,6 +22,12 @@ NextHire is an application that helps users manage and track job applications. T
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
+## NextHire Wiki
+
+For more details on the architecture of NextHire, visit NextHire's wiki pages:
+
+[Database Schema](https://github.com/Tom-Moosbrugger/NextHire/wiki/Database-Schema) | [Features List](https://github.com/Tom-Moosbrugger/NextHire/wiki/Features-List) | [Wireframe](https://github.com/Tom-Moosbrugger/NextHire/wiki/NextHire-Wireframe) | [User Stories](https://github.com/Tom-Moosbrugger/NextHire/wiki/User-Stories)
+
 ## Using NextHire
 
 NextHire is a user-based application, meaning prospective users must make an account in order to access its features. There is no content for non-users. 
@@ -40,51 +46,61 @@ Applications are grouped by their application status. This system allows users t
 
 To create a new application, users click the create new application button:
 
-gif of clicking the create new application button
+![Create Application Button](./assets/readme_assets/create-application-button.gif)
 
-This opens the Create Application form, where users can enter the specific details of their application. Once an application is created, users will be directed back to a new page containing the details of their new application:
+This opens the Create Application form, where users can enter the specific details of their application. Once created, users will be directed to a new page containing the details of their new application:
 
-gif of new application
+![Create Application](./assets/readme_assets/creating-new-application.gif)
 
 From this page, you can use the "Update" button to change your application: 
 
-gif of updating
+![Update Application](./assets/readme_assets/updating-application.gif)
 
 Or, you can use the "Delete" button to permanently delete the application and its data. 
 
-gif of deleting
+![Delete Application](./assets/readme_assets/delete-application.gif)
 
 Or, you can return to the "Applications" page by pressing the "X" at the top of the application:
 
-gif of closing the details page.
+![Exit Application](./assets/readme_assets/exit-application.gif)
 
 A few other details from the "Applications" page:
 
-To once again see the details of an application, a user can simply click it:
+To see an application's details page again, users can click any application on the "Applications" page:
 
-gif of clicking a tile to open the details page
+![View Application](./assets/readme_assets/see-application-details.gif)
 
-The other core feature of the "Applications" page is the drag and drop functionality. Users can update the application status of each application through the "Update" button, but they can also do this from the "Applications" page by dragging an application from one column into another, like so:
+The other core feature of the "Applications" page is the drag and drop functionality. Users can update the application status of each application through the "Update" button, but they can also do this from the "Applications" page by simply dragging an application from one column into another, like so:
 
-gif of drag and drop
+![Drag and Drop](./assets/readme_assets/drag-and-drop.gif)
 
-This action will automatically update the status of that application, making it easy to quickly change the statuses of multiple applications!
+This action will automatically update the status of that application!
 
 ### Common Questions
 
-At the top of the page, users can click the "Common Questions" button to view the "Common Questions" page. Here, users can store their responses to common application questions, allowing them to reference and use these responses throughout their applications.
+At the top of the page, users can click the "Common Questions" button to view the "Common Questions" page. Here, users can store their responses to common job application questions, allowing them to reference and use these responses throughout their applications.
 
-gif of common questions page
+![Common Questions Page](./assets/readme_assets/common-questions-page.gif)
 
 To create a new common question, simply click the "Add Common Question" button, and enter the question and its response. Once created, you will immediately see the question appear in the list:
 
-gif of creating a common question
+![Create Common Question](./assets/readme_assets/create-common-question.gif)
 
 Clicking a question will allow you to see and update that question:
 
-gif of updating
+![Update Common Question](./assets/readme_assets/update-common-question.gif)
 
 And pressing the garbage can icon in the corner of a question allows you to delete it:
 
-gif of deleting
+![Delete Common Question](./assets/readme_assets/delete-common-question.gif)
 
+## Future Implementation Goals
+
+- Add Application Questions feature, allowing users to add application-specific questions to each application
+- Add Application Interviews feature, allowing users to add details and notes about upcoming interviews
+- Add Application Rejection feature, allowing users to add details and notes about rejections
+- Add Application Offers feature, allowing users to add details and notes about job offers
+- Integrate Common Questions with Application Questions, allowing users to pre-fill responses to application-specific questions with responses from their Common Questions
+- Add Resume feature, allowing users to store their resumes and add them to an application
+- Add Cover Letter feature, allowing users to store their cover letters and add them to an application
+- Add Notifications feature, notifying users of upcoming deadlines
