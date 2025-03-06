@@ -38,7 +38,7 @@
 .application-details #close-application {
   position: absolute;
   top: 15px;
-  left: 15px;
+  right: 15px;
   font-size: 20px;
   cursor: pointer;
   z-index: 1;
