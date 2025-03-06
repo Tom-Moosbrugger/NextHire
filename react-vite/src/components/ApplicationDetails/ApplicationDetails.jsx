@@ -24,7 +24,7 @@ const ApplicationDetails = () => {
   const handleClose = () => navigate("/applications");
 
   return (
-    <article className="application-details">
+    <article className="application-details" id={application.applicationStatus}>
       <TfiClose onClick={handleClose} id="close-application" />
       <header>
         <h1>Application Details</h1>
