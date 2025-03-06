@@ -12,7 +12,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 50px 0 20px;
+  margin: 60px 0 30px;
 }
 
 .application-details h1 {
@@ -57,6 +57,7 @@
 
 .application-details em {
   font-weight: 800;
+  width: 100%;
 }
 
 .application-details section {
@@ -103,6 +104,15 @@
   background-color: rgb(18, 186, 18);
 }
 
+.company-and-job-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.company-and-job-info > div {
+  width: 50%;
+}
+
 .application-link {
   display: flex;
   flex-direction: row;
@@ -115,7 +125,6 @@
   flex-direction: row;
   column-gap: 10px;
 }
-
 
 .application-buttons {
   display: flex;

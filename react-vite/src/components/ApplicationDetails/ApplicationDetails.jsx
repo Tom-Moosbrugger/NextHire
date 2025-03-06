@@ -47,27 +47,45 @@ const ApplicationDetails = () => {
           ))}
         </div>
       </section>
-      <section className="company-info">
-        <h2>Company Information</h2>
-        <p>
-          <em>Company Name:</em> {application.companyName}
-        </p>
-        <div className="application-link">
+      <section className="company-and-job-info">
+        <div>
+          <h2>Company Information</h2>
           <p>
-            <em>Company Website:</em>
+            <em>Company Name:</em> {application.companyName}
           </p>
-          {application.companyWebsite && (
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={application.companyWebsite}
-            >
-              Visit Website
-            </a>
-          )}
+          <div className="application-link">
+            <p>
+              <em>Company Website:</em>
+            </p>
+            {application.companyWebsite && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={application.companyWebsite}
+              >
+                Visit Website
+              </a>
+            )}
+          </div>
+        </div>
+        <div>
+          <h2>Job Information</h2>
+          <p>
+            <em>Job Title:</em> {application.jobTitle}
+          </p>
+          <div className="application-link">
+            <p>
+              <em>Job Post:</em>
+            </p>
+            {application.companyWebsite && (
+              <a target="_blank" rel="noreferrer" href={application.jobPostUrl}>
+                Visit Website
+              </a>
+            )}
+          </div>
         </div>
       </section>
-      <section className="job-info">
+      {/* <section className="job-info">
         <h2>Job Information</h2>
         <p>
           <em>Job Title:</em> {application.jobTitle}
@@ -82,7 +100,7 @@ const ApplicationDetails = () => {
             </a>
           )}
         </div>
-      </section>
+      </section> */}
       <section className="job-details">
         <h2>Job Details</h2>
         <p>{application.jobDetails}</p>
@@ -134,7 +152,7 @@ const ApplicationDetails = () => {
         </div>
       </section>
       <section className="application-buttons">
-      <OpenModalButton
+        <OpenModalButton
           modalComponent={<EditApplication />}
           buttonText="Update Application"
           id="edit-application"
