@@ -3,7 +3,8 @@
   border: 0.5px solid white;
   position: relative;
   min-width: 950px;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
+  padding: 0px 40px 40px
 }
 
 .application-details header {
