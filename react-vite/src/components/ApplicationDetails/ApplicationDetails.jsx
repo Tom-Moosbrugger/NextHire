@@ -28,16 +28,6 @@ const ApplicationDetails = () => {
       <TfiClose onClick={handleClose} id="close-application" />
       <header>
         <h1>Application Details</h1>
-        <OpenModalButton
-          modalComponent={<EditApplication />}
-          buttonText="Update"
-          id="edit-application"
-        />
-        <OpenModalButton
-          modalComponent={<DeleteApplication />}
-          buttonText="Delete"
-          id="delete-application"
-        />
       </header>
       <section className="application-status">
         <h2>Application Status</h2>
@@ -129,7 +119,7 @@ const ApplicationDetails = () => {
         </div>
       </section>
       <section className="application-dates">
-        <h2>Application Dates</h2>
+        <h2>Submission Dates</h2>
         <div>
           <p>
             <em>Application Deadline:</em>
@@ -142,6 +132,18 @@ const ApplicationDetails = () => {
           </p>
           <p>{application.dateSubmitted}</p>
         </div>
+      </section>
+      <section className="application-buttons">
+      <OpenModalButton
+          modalComponent={<EditApplication />}
+          buttonText="Update Application"
+          id="edit-application"
+        />
+        <OpenModalButton
+          modalComponent={<DeleteApplication />}
+          buttonText="Delete Application"
+          id="delete-application"
+        />
       </section>
     </article>
   );

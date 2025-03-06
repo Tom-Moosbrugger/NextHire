@@ -12,8 +12,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
-  margin-top: 10px;
+  margin: 50px 0 20px;
 }
 
 .application-details h1 {
@@ -21,17 +20,8 @@
   text-align: center;
   border: 0.5px solid white;
   padding: 10px 0px;
-  width: 500px;
+  width: 90%;
   box-shadow: -5px 5px goldenrod;
-}
-
-.application-details button {
-  background-color: black;
-  color: white;
-  border: 0.5px solid white;
-  height: 40px;
-  width: 150px;
-  cursor: pointer;
 }
 
 .application-details a {
@@ -45,31 +35,11 @@
   color: rgb(224, 25, 243);
 }
 
-.application-details header button:hover {
-  box-shadow: -5px 5px goldenrod;
-}
-
-.application-details header button:active {
-  box-shadow: -5px 5px white;
-}
-
-.application-details #edit-application {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-}
-
-.application-details #delete-application {
-  position: absolute;
-  bottom: 5px;
-  right: 15px;
-}
-
 .application-details #close-application {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 25px;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
   cursor: pointer;
   z-index: 1;
 }
@@ -146,6 +116,26 @@
   column-gap: 10px;
 }
 
-.application-dates h3 {
-    font-size: 24px;
+
+.application-buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.application-buttons button {
+  background-color: black;
+  color: white;
+  border: 0.5px solid white;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.application-buttons button:hover {
+  box-shadow: -5px 5px goldenrod;
+}
+
+.application-buttons button:active {
+  box-shadow: -5px 5px white;
 }
