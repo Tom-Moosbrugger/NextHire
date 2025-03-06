@@ -9,34 +9,23 @@
 .landing-page-container {
   background-color: black;
   border: 0.5px solid white;
-  /* box-shadow: -40px 40px rgb(176, 176, 176); */
   box-shadow: -40px 40px rgb(239, 187, 18);
   width: 560px;
-  height: 500px;
+  /* height: 500px; */
   padding: 40px;
 }
 
 .landing-page h1 {
-  border-bottom: 1px solid #4d4d4d;
-  border-left: 1px solid #4d4d4d;
   font-size: 50px;
-  margin-bottom: 20px;
-  padding-left: 10px;
-  text-align: left;
-}
-
-.landing-page p {
-  font-size: 20px;
-  padding-left: 5px;
-  text-align: left;
+  text-align: center;
 }
 
 .landing-page section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 0;
-  height: 75%;
+  padding-top: 40px;
+  row-gap: 50px;
 }
 
 .landing-page button {

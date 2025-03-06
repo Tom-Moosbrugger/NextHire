@@ -1,8 +1,18 @@
 .application-details {
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  padding: 40px;
+  margin: 50px;
+  border: 0.5px solid white;
+  position: relative;
+  min-width: 950px;
+  padding-bottom: 30px;
+}
+
+.application-details header {
+  margin: 50px 0 20px;
+}
+
+.application-details h1 {
+  font-size: 50px;
+  text-align: center;
 }
 
 .application-details a {
@@ -16,83 +26,33 @@
   color: rgb(224, 25, 243);
 }
 
-.application-details p {
+.application-details #close-application {
+  position: absolute;
+  top: 15px;
+  right: 15px;
   font-size: 20px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .application-details h2 {
   font-size: 30px;
-  text-align: center;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid white;
 }
 
-.application-details header {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  min-width: 950px;
-  margin-bottom: 10px;
+.application-details p {
+  font-size: 20px;
 }
 
-.application-details header h1 {
-  font-size: 40px;
-  text-align: center;
-  border: 0.5px solid white;
-  padding: 30px 0px;
-  width: 500px;
-  box-shadow: -10px 10px goldenrod;
+.application-details em {
+  font-weight: 800;
+  width: 100%;
 }
 
-.application-details header button {
-  background-color: black;
-  color: white;
-  border: 0.5px solid white;
-  height: 40px;
-  width: 150px;
-  cursor: pointer;
-}
-
-.application-details header button:hover {
-  box-shadow: -5px 5px goldenrod;
-}
-
-.application-details header button:active {
-  box-shadow: -5px 5px white;
-}
-
-.application-details #edit-application {
-  position: absolute;
-  top: 5px;
-  right: 15px;
-}
-
-.application-details #delete-application {
-  position: absolute;
-  bottom: 5px;
-  right: 15px;
-}
-
-.application-details #close-application {
-  position: absolute;
-  height: 35px;
-  width: 35px;
-  top: 5px;
-  left: 15px;
-  font-size: 25px;
-  padding: 10px;
-  border: 0.5px solid white;
-  cursor: pointer;
-}
-
-.application-status {
-  border: 0.5px solid white;
-  padding: 20px 20px;
-  min-width: 950px;
-}
-
-.application-status h2 {
-  padding-bottom: 20px;
+.application-details section {
+  padding: 20px 40px;
 }
 
 .statuses-container {
@@ -135,68 +95,47 @@
   background-color: rgb(18, 186, 18);
 }
 
-.company-and-job {
+.company-and-job-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.company-and-job-info > div {
+  width: 50%;
+}
+
+.application-link {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 950px;
+  column-gap: 10px;
 }
 
-.company-info,
-.job-info {
-  min-width: 450px;
-  height: 180px;
-  border: 0.5px solid white;
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: 10px;
-  padding: 10px 20px;
-}
-
-.company-info div {
+.application-dates div {
   display: flex;
   flex-direction: row;
   column-gap: 10px;
 }
 
-.job-info div {
-  display: flex;
-  flex-direction: row;
-  column-gap: 10px;
-}
-
-.job-details,
-.submission-details {
+.application-buttons {
   display: flex;
   flex-direction: column;
-  min-width: 950px;
+  row-gap: 30px;
+}
+
+.application-buttons button {
+  background-color: black;
+  color: white;
   border: 0.5px solid white;
-  padding: 20px;
-  row-gap: 10px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-.application-date {
-  min-width: 950px;
-  border: 0.5px solid white;
-  padding: 20px;
+.application-buttons button:hover {
+  box-shadow: -5px 5px goldenrod;
 }
 
-.application-date p {
-  font-size: 24px;
-  text-align: center;
-}
-
-.application-materials {
-  min-width: 950px;
-  border: 0.5px solid white;
-  padding: 20px;
-}
-
-.application-materials div {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    padding-bottom: 10px
+.application-buttons button:active {
+  box-shadow: -5px 5px white;
 }

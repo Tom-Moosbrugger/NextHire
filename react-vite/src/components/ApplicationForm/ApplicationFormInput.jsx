@@ -5,6 +5,7 @@ const ApplicationFormInput = ({
   value,
   accept,
   handleChange,
+  id
 }) => {
   return (
     <div className="application-form-input">
@@ -16,6 +17,7 @@ const ApplicationFormInput = ({
           value={value}
           accept={accept}
           onChange={handleChange}
+          id={id}
         />
       </label>
     </div>
