@@ -69,15 +69,6 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
     "Offered",
   ];
 
-  const setDummyApplicationData = () => {
-    setCompanyName("Test Company");
-    setCompanyWebsite("https://www.testcompany.com/");
-    setJobTitle("Junior Software Engineer");
-    setJobDetails("Test job details");
-    setJobPostUrl("https://www.testcompany.com/job-post");
-    setSubmissionDetails("Test submission details");
-  };
-
   const handleRadioChange = (e) => setApplicationStatus(e.target.value);
 
   const handleSubmit = async (e) => {
@@ -224,6 +215,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             handleChange={(e) => setSubmissionDetails(e.target.value)}
           />
           <ApplicationFormInput
+            id="application-deadline"
             label="Application Deadline*"
             type="date"
             value={applicationDeadline}
@@ -260,7 +252,6 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
         </section>
         <section className="application-form-submit">
           <button onClick={handleSubmit}>{buttonText}</button>
-          <button onClick={setDummyApplicationData}>Set Dummy Data</button>
         </section>
       </form>
     </article>
@@ -268,34 +259,3 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
 };
 
 export default ApplicationForm;
-
-/*
-
-lets plan this form!
-
-step 1: create the form with controlled inputs
-    create the form inputs and layout
-    make sure to include error messages
-    create slices of state for each input
-        set initial values to prop values
-        reset values based on form input
-
-step 2: create validations
-    set errors slice of state
-    set a useEffect to monitor validations
-    create an errors object
-    test each input for validation errors
-    set errors on error object
-    set validation errors to errors slice of state
-    set submitted slice of state
-    display errors when user tries to submit
-
-step 3: handle submission
-    if there are validation errors, return
-    submission will be a slightly different pattern:
-    we need to create a new form instance and append the data that way
-    we then send the form to the backend for validation
-    determine if the form is create or edit, then submit the appropriate thunk
-    if errors from the backend, display them
-    if not, redirect to the appropriate location
-*/

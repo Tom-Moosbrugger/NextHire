@@ -2,7 +2,7 @@
   width: 1000px;
   max-height: 80vh;
   border: 0.5px solid white;
-  padding: 60px 80px;
+  padding: 60px 80px 40px;
   overflow-x: hidden;
   overflow-y: scroll;
   font-size: 20px;
@@ -159,7 +159,7 @@
 }
 
 .application-form-materials label {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .application-form #application-deadline {
