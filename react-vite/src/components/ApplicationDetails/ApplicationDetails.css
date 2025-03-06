@@ -4,6 +4,7 @@
   position: relative;
   min-width: 950px;
   padding-bottom: 30px;
+  box-shadow: -10px 10px goldenrod;
 }
 
 .application-details header {
@@ -12,16 +13,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 60px 0 30px;
+  margin: 50px 0 20px;
 }
 
 .application-details h1 {
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
-  border: 0.5px solid white;
-  padding: 10px 0px;
-  width: 90%;
-  box-shadow: -5px 5px goldenrod;
 }
 
 .application-details a {
