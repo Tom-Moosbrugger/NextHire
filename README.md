@@ -1,4 +1,4 @@
-# Welcome to Next Hire
+# Welcome to NextHire
 
 NextHire is an application that helps users manage and track job applications. The app gives users the ability to store important information, deadlines, and application-specific materials for each individual job application, as well as a convenient interface for tracking multiple applications at the same time. In the future, it will also provides ways to store and easily access reusable application components (resumes, cover letters, and common application questions), to make applying to jobs faster and more efficient.
 
