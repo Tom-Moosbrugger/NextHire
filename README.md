@@ -22,6 +22,12 @@ NextHire is an application that helps users manage and track job applications. T
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
+## NextHire Wiki
+
+For more details on the architecture of NextHire, visit NextHire's wiki pages:
+
+[Database Schema](https://github.com/Tom-Moosbrugger/NextHire/wiki/Database-Schema) | [Features List](https://github.com/Tom-Moosbrugger/NextHire/wiki/Features-List) | [Wireframe](https://github.com/Tom-Moosbrugger/NextHire/wiki/NextHire-Wireframe) | [User Stories](https://github.com/Tom-Moosbrugger/NextHire/wiki/User-Stories)
+
 ## Using NextHire
 
 NextHire is a user-based application, meaning prospective users must make an account in order to access its features. There is no content for non-users. 
@@ -88,3 +94,13 @@ And pressing the garbage can icon in the corner of a question allows you to dele
 
 ![Delete Common Question](./assets/readme_assets/delete-common-question.gif)
 
+## Future Implementation Goals
+
+- Add Application Questions feature, allowing users to add application-specific questions to each application
+- Add Application Interviews feature, allowing users to add details and notes about upcoming interviews
+- Add Application Rejection feature, allowing users to add details and notes about rejections
+- Add Application Offers feature, allowing users to add details and notes about job offers
+- Integrate Common Questions with Application Questions, allowing users to pre-fill responses to application-specific questions with responses from their Common Questions
+- Add Resume feature, allowing users to store their resumes and add them to an application
+- Add Cover Letter feature, allowing users to store their cover letters and add them to an application
+- Add Notifications feature, notifying users of upcoming deadlines
