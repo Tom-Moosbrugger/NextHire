@@ -33,11 +33,12 @@ textarea {
   border: none;
 }
 
-textarea,
+textarea:focus,
 input:focus {
   outline: none;
   box-shadow: none;
   border-color: none;
+  border: .5px solid white
 }
 
 table {

@@ -1,12 +1,17 @@
 .application-form {
-  width: 900px;
+  width: 1000px;
   max-height: 80vh;
   border: 0.5px solid white;
-  padding: 50px 50px;
+  padding: 60px 80px;
   overflow-x: hidden;
   overflow-y: scroll;
   font-size: 20px;
   position: relative;
+  box-shadow: -10px 10px goldenrod;
+}
+
+.application-form form > section {
+  margin-bottom: 25px;
 }
 
 .application-form::-webkit-scrollbar {
@@ -15,31 +20,23 @@
 
 .application-form-main-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 10px 0;
 }
 
 .application-form #close-application-form {
   position: absolute;
-  height: 30px;
-  width: 30px;
   top: 15px;
-  left: 15px;
-  font-size: 25px;
-  padding: 10px;
-  border: 0.5px solid white;
+  right: 15px;
+  font-size: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .application-form h1 {
-  font-size: 40px;
-  border: .5px solid white;
-  padding: 10px 20px;
-  margin-bottom: 30px;
-  box-shadow: -10px 10px goldenrod;
+  font-size: 50px;
   text-align: center;
-  width: 95%
 }
 
 .application-form-header {
@@ -50,14 +47,12 @@
   font-size: 30px;
   font-weight: 600;
   border-bottom: 1px solid #4d4d4d;
-  border-left: 1px solid #4d4d4d;
-  padding-left: 5px;
   margin-bottom: 10px;
 }
 
 .application-form-header h3 {
   font-size: 20px;
-  padding-left: 5px;
+  font-style: italic;
 }
 
 .application-form-radio {
@@ -66,6 +61,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 20px;
+  padding-top: 10px;
 }
 
 #Upcoming-radio:checked {
@@ -96,6 +92,10 @@
   column-gap: 8px;
 }
 
+.application-form-input {
+  margin: 10px;
+}
+
 .application-form-input label {
   display: flex;
   flex-direction: column;
@@ -124,11 +124,11 @@
 }
 
 #job-details {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 #submission-details {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .application-form-input textarea::placeholder {
@@ -151,6 +151,7 @@
 .application-form-input input[type="file"] {
   cursor: pointer;
   padding-top: 3px;
+  width: 50%
 }
 
 .application-form-input input[type="file"]:focus {
@@ -161,10 +162,16 @@
   margin-bottom: 20px;
 }
 
+.application-form #application-deadline {
+  margin-bottom: 0;
+  padding: 0;
+}
+
 .application-form-error {
   color: red;
   font-size: 16px;
   min-height: 25px;
+  padding-left: 10px;
 }
 
 .application-form-submit {
