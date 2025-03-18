@@ -5,19 +5,22 @@ from app.models import db, ApplicationQuestion
 
 application_question_routes = Blueprint("application_questions", __name__)
 
+
 @application_question_routes.route("/<int:application_id>")
 @login_required
 def get_application_questions(application_id):
-    return { "testing": "test" }
+    questions = ApplicationQuestion.query.filter(
+        ApplicationQuestion.application_id == application_id
+    ).all()
+
+    return { question.id: question.to_dict() for question in questions }
+
 
 @application_question_routes.route("/<int:application_id>", methods=["POST"])
 @login_required
 def create_application_questions(application_id):
     print(request.get_json())
-    return { "testing": "test" }
-
-
-
+    return {"testing": "test"}
 
 
 """
