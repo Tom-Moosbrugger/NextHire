@@ -42,6 +42,7 @@ class Application(db.Model):
     questions = db.relationship(
         "ApplicationQuestion",
         back_populates="application",
+        # lazy="joined",
         cascade="all, delete-orphan",
     )
     interviews = db.relationship(
@@ -73,4 +74,5 @@ class Application(db.Model):
             "coverLetterUrl": self.cover_letter_url,
             "resumeUrl": self.resume_url,
             "dateSubmitted": self.date_submitted.strftime("%Y-%m-%d") if self.date_submitted else None,
+            # "questions": [{self.id: {question}} for question in self.questions] if self.questions else [],
         }
