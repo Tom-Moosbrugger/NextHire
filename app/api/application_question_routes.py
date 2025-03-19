@@ -78,6 +78,39 @@ def create_questions(application_id):
     return {question.id: question.to_dict() for question in valid_questions}
 
 
+@application_question_routes.route("/<int:question_id>", methods=["PUT"])
+def update_question(application_id, question_id):
+    # need to validate the request input
+    # if request input is valid:
+    # need to get the question and the application
+    # need to do the checks for ownership and resource not found
+    # need to updated properties
+
+    form = ApplicationQuestionForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        question_to_update = ApplicationQuestion.query.options(
+            joinedload(ApplicationQuestion.application)
+        ).get(question_id)
+
+        if question_to_update is None:
+            return {"errors": "Question not found"}, 404
+
+        if question_to_update.application.user_id != current_user.id:
+            return {"error": "Application must belong to the current user"}, 403
+        
+        question_to_update.question = form.question.data
+        question_to_update.response = form.response.data
+
+        db.session.commit()
+
+        return {question_id: question_to_update.to_dict()}
+
+    return form.errors, 400
+
+
 @application_question_routes.route("/<int:question_id>", methods=["DELETE"])
 def delete_question(application_id, question_id):
     question_to_delete = ApplicationQuestion.query.options(
@@ -94,12 +127,3 @@ def delete_question(application_id, question_id):
     db.session.commit()
 
     return {"message": "Successfully deleted"}
-
-
-"""
-
-delete an application question
-
-update an application question
-
-"""
