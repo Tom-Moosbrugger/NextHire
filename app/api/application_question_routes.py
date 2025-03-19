@@ -79,13 +79,7 @@ def create_questions(application_id):
 
 
 @application_question_routes.route("/<int:question_id>", methods=["PUT"])
-def update_question(application_id, question_id):
-    # need to validate the request input
-    # if request input is valid:
-    # need to get the question and the application
-    # need to do the checks for ownership and resource not found
-    # need to updated properties
-
+def update_question(question_id):
     form = ApplicationQuestionForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
