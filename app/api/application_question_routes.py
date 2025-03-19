@@ -100,7 +100,7 @@ def update_question(application_id, question_id):
 
         if question_to_update.application.user_id != current_user.id:
             return {"error": "Application must belong to the current user"}, 403
-        
+
         question_to_update.question = form.question.data
         question_to_update.response = form.response.data
 
