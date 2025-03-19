@@ -25,7 +25,7 @@ def get_application_questions(application_id):
 
 @application_question_routes.route("", methods=["POST"])
 @login_required
-def create_application_questions(application_id):
+def create_questions(application_id):
     application = Application.query.get(application_id)
 
     if application is None:
@@ -76,6 +76,24 @@ def create_application_questions(application_id):
     db.session.commit()
 
     return {question.id: question.to_dict() for question in valid_questions}
+
+
+@application_question_routes.route("/<int:question_id>", methods=["DELETE"])
+def delete_question(application_id, question_id):
+    question_to_delete = ApplicationQuestion.query.options(
+        joinedload(ApplicationQuestion.application)
+    ).get(question_id)
+
+    if question_to_delete is None:
+        return {"errors": "Question not found"}, 404
+
+    if question_to_delete.application.user_id != current_user.id:
+        return {"error": "Application must belong to the current user"}, 403
+
+    db.session.delete(question_to_delete)
+    db.session.commit()
+
+    return {"message": "Successfully deleted"}
 
 
 """

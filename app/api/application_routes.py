@@ -12,6 +12,7 @@ from .application_question_routes import application_question_routes
 
 application_routes = Blueprint("applications", __name__)
 
+# register application question routes as a sub-blueprint
 application_routes.register_blueprint(
     application_question_routes, url_prefix="/<int:application_id>/questions"
 )
@@ -32,7 +33,7 @@ def update_application_status(application_id):
         return {"errors": "Application not found"}, 404
 
     if edited_application.user_id != current_user.id:
-        return {"message": "Application must belong to the current user"}, 403
+        return {"errors": "Application must belong to the current user"}, 403
 
     if form.validate_on_submit():
         edited_application.application_status = form.application_status.data
@@ -57,7 +58,7 @@ def update_application(application_id):
         return {"errors": "Application not found"}, 404
 
     if edited_application.user_id != current_user.id:
-        return {"message": "Application must belong to the current user"}, 403
+        return {"errors": "Application must belong to the current user"}, 403
 
     if form.validate_on_submit():
         # updating fields
