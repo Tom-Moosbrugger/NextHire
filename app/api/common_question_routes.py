@@ -20,7 +20,7 @@ def update_common_question(common_question_id):
         return {"errors": "Common question not found"}, 404
 
     if edited_common_question.user_id != current_user.id:
-        return {"errors": "Common question must belong to current user"}
+        return {"errors": "Common question must belong to current user"}, 403
     
     if form.validate_on_submit():
         edited_common_question.question = form.question.data
@@ -43,7 +43,7 @@ def delete_common_question(common_question_id):
         return {"errors": "Common question not found"}, 404
 
     if common_question_to_delete.user_id != current_user.id:
-        return {"errors": "Common question must belong to current user"}
+        return {"errors": "Common question must belong to current user"}, 403
 
     db.session.delete(common_question_to_delete)
 

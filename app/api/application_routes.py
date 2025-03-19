@@ -7,9 +7,15 @@ from app.api.aws_helper_functions import (
     get_unique_filename,
     remove_file_from_s3,
 )
+from .application_question_routes import application_question_routes
 
 
 application_routes = Blueprint("applications", __name__)
+
+application_routes.register_blueprint(
+    application_question_routes, url_prefix="/<int:application_id>/questions"
+)
+
 
 @application_routes.route("/<int:application_id>", methods=["PATCH"])
 @login_required
@@ -26,10 +32,9 @@ def update_application_status(application_id):
         return {"errors": "Application not found"}, 404
 
     if edited_application.user_id != current_user.id:
-        return {"message": "Application must belong to the current user"}
-    
-    if form.validate_on_submit():
+        return {"message": "Application must belong to the current user"}, 403
 
+    if form.validate_on_submit():
         edited_application.application_status = form.application_status.data
 
         db.session.commit()
@@ -52,7 +57,7 @@ def update_application(application_id):
         return {"errors": "Application not found"}, 404
 
     if edited_application.user_id != current_user.id:
-        return {"message": "Application must belong to the current user"}
+        return {"message": "Application must belong to the current user"}, 403
 
     if form.validate_on_submit():
         # updating fields
@@ -125,7 +130,7 @@ def delete_application(application_id):
         return {"errors": "Application not found"}, 404
 
     if application_to_delete.user_id != current_user.id:
-        return {"errors": "Application must belong to current user"}
+        return {"errors": "Application must belong to current user"}, 403
 
     if application_to_delete.cover_letter_url is not None:
         aws_delete = remove_file_from_s3(application_to_delete.cover_letter_url)

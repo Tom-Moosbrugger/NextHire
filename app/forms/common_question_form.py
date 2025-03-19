@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import InputRequired, Length, DataRequired
 
 class CommonQuestionForm(FlaskForm):
-    question = StringField("question", validators=[InputRequired(), Length(min=10, max=500)])
-    response = TextAreaField("response", validators=[InputRequired()])
+    question = StringField(validators=[InputRequired(), Length(min=10, max=500)])
+    response = TextAreaField(validators=[InputRequired()])
