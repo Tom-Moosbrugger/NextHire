@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import applicationsReducer from "./applications";
 import commonQuestionsReducer from "./commonQuestions";
+import applicationQuestionReducer from "./applicationQuestions";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   applications: applicationsReducer,
-  commonQuestions: commonQuestionsReducer
+  commonQuestions: commonQuestionsReducer,
+  appQuestions: applicationQuestionReducer,
 });
 
 let enhancer;
