@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import CommonQuestions from "../components/CommonQuestions";
 import Resumes from "../components/Resumes";
 import CoverLetters from "../components/CoverLetters/CoverLetters";
+import ApplicationQuestions from "../components/ApplicationForm/ApplicationQuestions";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
           {
             path: "/cover-letters",
             element: <CoverLetters />,
+          },
+          {
+            path: "/test",
+            element: <ApplicationQuestions />,
           },
         ],
       },
