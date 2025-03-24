@@ -39,6 +39,9 @@ def create_questions(application_id):
     if isinstance(new_questions, list) is not True:
         return {"error": "request must be an array"}, 400
 
+    if len(new_questions) > 10:
+        return {"error": "Can only upload 10 questions at a time"}, 403
+
     errors = []
 
     valid_questions = []
