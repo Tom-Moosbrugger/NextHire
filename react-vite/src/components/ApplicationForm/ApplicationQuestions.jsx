@@ -1,16 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import CommonQuestionFormTextArea from "../CommonQuestionForm/CommonQuestionFormTextArea";
 import CommonQuestionFormError from "../CommonQuestionForm/CommonQuestionFormError";
 import { validateAppQuestions } from "../../resources/helperFunctions";
 
-const ApplicationQuestions = () => {
-  const [appQuestions, setAppQuestions] = useState([]);
-  const [errors, setErrors] = useState({});
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+const ApplicationQuestions = ({
+  appQuestions,
+  setAppQuestions,
+  errors,
+  setErrors,
+  hasSubmitted,
+}) => {
 
   useEffect(() => {
     setErrors(validateAppQuestions(appQuestions));
-  }, [appQuestions]);
+  }, [appQuestions, setErrors]);
 
   // close over event, index, and name of property
   // return regular setting function to update state
@@ -23,7 +27,11 @@ const ApplicationQuestions = () => {
     });
   };
 
-  const addQuestion = () => {
+  const addQuestion = (e) => {
+    e.preventDefault();
+
+    e.stopPropagation();
+
     setAppQuestions((prevQuestions) => [
       ...prevQuestions,
       { question: "", response: "" },
@@ -32,15 +40,21 @@ const ApplicationQuestions = () => {
 
   // close over index and return new function with current index
   // inner cb filters out the target question.
-  const removeQuestion = (index) => () =>
+  const removeQuestion = (index) => () => {
+    e.preventDefault();
+
+    e.stopPropagation();
+
     setAppQuestions(appQuestions.filter((q, i) => i !== index));
+  }
+   
 
   return (
     <>
       <button onClick={addQuestion}>Add Question</button>
       {appQuestions.length > 0 &&
         appQuestions.map((_appQuestion, index) => (
-          <section key={index}>
+          <section key="static">
             <CommonQuestionFormTextArea
               label="Question:"
               value={appQuestions[index].question}
@@ -61,7 +75,7 @@ const ApplicationQuestions = () => {
               handleChange={(e) =>
                 setAppQuestions(setValue(e, index, "response"))
               }
-              rows="4"
+              rows="15"
             />
             <CommonQuestionFormError
               hasSubmitted={hasSubmitted}
@@ -70,15 +84,8 @@ const ApplicationQuestions = () => {
             <button onClick={removeQuestion(index)}>Remove Question</button>
           </section>
         ))}
-        <button onClick={() => setHasSubmitted(true)}>Submit</button>
     </>
   );
 };
 
 export default ApplicationQuestions;
-
-/*
-
-
-
-*/

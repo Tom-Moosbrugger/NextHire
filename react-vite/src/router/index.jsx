@@ -10,6 +10,7 @@ import CommonQuestions from "../components/CommonQuestions";
 import Resumes from "../components/Resumes";
 import CoverLetters from "../components/CoverLetters/CoverLetters";
 import ApplicationQuestions from "../components/ApplicationForm/ApplicationQuestions";
+import TemporaryComponent from "../components/Debugging/TempComponent";
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/test",
-            element: <ApplicationQuestions />,
+            element: <TemporaryComponent />,
           },
         ],
       },

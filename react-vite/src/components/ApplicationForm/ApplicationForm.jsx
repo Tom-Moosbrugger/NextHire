@@ -6,6 +6,7 @@ import ApplicationFormInput from "./ApplicationFormInput";
 import ApplicationFormTextArea from "./ApplicationFormTextarea";
 import ApplicationFormHeader from "./ApplicationFormHeader";
 import ApplicationFormError from "./ApplicationFormError";
+import ApplicationQuestions from "./ApplicationQuestions";
 import { validateApplicationInputs } from "../../resources/helperFunctions";
 import { TfiClose } from "react-icons/tfi";
 import * as applicationActions from "../../redux/applications";
@@ -31,6 +32,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
   const [dateSubmitted, setDateSubmitted] = useState(application.dateSubmitted);
   const [coverLetter, setCoverLetter] = useState(null);
   const [resume, setResume] = useState(null);
+  const [appQuestions, setAppQuestions] = useState([]);
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();
@@ -73,6 +75,8 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Submit button clicked");
 
     // render errors, if any
     if (Object.values(errors).length) return setHasSubmitted(true);
@@ -126,9 +130,7 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
   return (
     <article className="application-form">
       <TfiClose onClick={() => closeModal()} id="close-application-form" />
-      <header className="application-form-main-header">
-        {header}
-      </header>
+      <header className="application-form-main-header">{header}</header>
       <form>
         <section>
           <ApplicationFormHeader
@@ -214,6 +216,12 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             value={submissionDetails}
             handleChange={(e) => setSubmissionDetails(e.target.value)}
           />
+        </section>
+        <section>
+          <ApplicationFormHeader
+            h2text="Application Dates"
+            h3text="Track the submission deadline and date submitted here:"
+          />
           <ApplicationFormInput
             id="application-deadline"
             label="Application Deadline*"
@@ -224,6 +232,12 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
           <ApplicationFormError
             hasSubmitted={hasSubmitted}
             error={errors.applicationDeadline}
+          />
+          <ApplicationFormInput
+            label="Date Submitted"
+            type="date"
+            value={dateSubmitted}
+            handleChange={(e) => setDateSubmitted(e.target.value)}
           />
         </section>
         <section className="application-form-materials">
@@ -243,13 +257,22 @@ const ApplicationForm = ({ application, applicationId, formType }) => {
             accept=".pdf"
             handleChange={(e) => setCoverLetter(e.target.files[0])}
           />
-          <ApplicationFormInput
-            label="Date Submitted"
-            type="date"
-            value={dateSubmitted}
-            handleChange={(e) => setDateSubmitted(e.target.value)}
-          />
         </section>
+        {formType === "createApplication" && (
+          <section>
+            <ApplicationFormHeader
+              h2text="Application Questions"
+              h3text="Add application questions here. Please note you can only add ten questions at a time."
+            />
+            <ApplicationQuestions
+              appQuestions={appQuestions}
+              setAppQuestions={setAppQuestions}
+              errors={errors}
+              setErrors={setErrors}
+              hasSubmitted={hasSubmitted}
+            />
+          </section>
+        )}
         <section className="application-form-submit">
           <button onClick={handleSubmit}>{buttonText}</button>
         </section>
