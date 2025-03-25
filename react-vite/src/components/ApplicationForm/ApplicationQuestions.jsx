@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CommonQuestionFormTextArea from "../CommonQuestionForm/CommonQuestionFormTextArea";
+import CommonQuestionFormError from "../CommonQuestionForm/CommonQuestionFormError";
+import { validateAppQuestions } from "../../resources/helperFunctions";
 
 const ApplicationQuestions = () => {
   const [appQuestions, setAppQuestions] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    setErrors(validateAppQuestions(appQuestions));
+  }, [appQuestions]);
 
   // close over event, index, and name of property
   // return regular setting function to update state
@@ -23,14 +31,15 @@ const ApplicationQuestions = () => {
   };
 
   // close over index and return new function with current index
+  // inner cb filters out the target question.
   const removeQuestion = (index) => () =>
     setAppQuestions(appQuestions.filter((q, i) => i !== index));
 
   return (
     <>
-      <button onClick={addQuestion}>ADD QUESTION</button>
+      <button onClick={addQuestion}>Add Question</button>
       {appQuestions.length > 0 &&
-        appQuestions.map((appQuestion, index) => (
+        appQuestions.map((_appQuestion, index) => (
           <section key={index}>
             <CommonQuestionFormTextArea
               label="Question:"
@@ -41,6 +50,10 @@ const ApplicationQuestions = () => {
               }
               rows="4"
             />
+            <CommonQuestionFormError
+              hasSubmitted={hasSubmitted}
+              error={errors[`question${index}`]}
+            />
             <CommonQuestionFormTextArea
               label="Response:"
               value={appQuestions[index].response}
@@ -50,9 +63,14 @@ const ApplicationQuestions = () => {
               }
               rows="4"
             />
+            <CommonQuestionFormError
+              hasSubmitted={hasSubmitted}
+              error={errors[`response${index}`]}
+            />
             <button onClick={removeQuestion(index)}>Remove Question</button>
           </section>
         ))}
+        <button onClick={() => setHasSubmitted(true)}>Submit</button>
     </>
   );
 };
@@ -61,12 +79,6 @@ export default ApplicationQuestions;
 
 /*
 
-Create a slice of state for application questions
-slice is an array of question/response pojos
-map over the array to generate the textareas
-create the onchange function for each input: select the object based on
-the index and edit the property with each update
-Create a button that pushes a new object to the array, creating another input
 
 
 */

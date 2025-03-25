@@ -71,3 +71,24 @@ export const validateCommonQuestionInputs = (question, response) => {
 
   return validationErrors;
 };
+
+export const validateAppQuestions = (appQuestions) => {
+  const validationErrors = {};
+
+  appQuestions.forEach((appQuestion, i) => {
+    if (!appQuestion.question) {
+      validationErrors[`question${i}`] = "Question is required";
+    } else if (appQuestion.question.length > 0 && appQuestion.question.length < 10) {
+      validationErrors[`question${i}`] =
+        "Question cannot be less than 10 characters";
+    } else if (appQuestion.question.length > 500) {
+      validationErrors[`question${i}`] =
+        "Question cannot be longer than 500 characters";
+    }
+
+    if (!appQuestion.response)
+      validationErrors[`response${i}`] = "Response is required";
+  });
+
+  return validationErrors;
+};
